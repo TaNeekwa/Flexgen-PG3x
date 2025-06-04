@@ -104,7 +104,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # === Proposal Type + Input Form Upload ===
-col1, spacer, col2 = st.columns([2, 0.4, 3])  # Added spacer between the two sections
+col1, spacer, col2 = st.columns([2, 0.4, 2])  # Added spacer between the two sections
 
 with col1:
     proposal_type = st.selectbox("🧩 Proposal Type", ["EMS Proposal", "Full Product Proposal"])
