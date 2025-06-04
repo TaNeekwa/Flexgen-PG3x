@@ -27,8 +27,9 @@ with st.sidebar:
 # === Apply theme after rerun ===
 dark_mode = st.session_state.dark_mode
 
- # === Divider ===
-    st.markdown("<hr>", unsafe_allow_html=True)
+# === Divider ===
+st.markdown("<hr>", unsafe_allow_html=True)
+
 # === Apply Conditional Styling After Toggle ===
 
 if dark_mode:
