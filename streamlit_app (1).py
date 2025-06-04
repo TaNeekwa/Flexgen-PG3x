@@ -195,6 +195,32 @@ with st.expander("BD Details", expanded=True):
 
 # === Divider ===
 st.markdown("<hr style='margin-top: 25px; margin-bottom: 10px;'>", unsafe_allow_html=True)
+# === FlexBot AI Assistant ===
+st.markdown("<hr style='margin-top: 25px; margin-bottom: 10px;'>", unsafe_allow_html=True)
+st.markdown("### 🤖 <b>FlexBot AI Assistant</b>", unsafe_allow_html=True)
+
+with st.expander("Need Help? Ask FlexBot", expanded=False):
+    st.markdown("Type your question below — FlexBot can help you calculate block counts, clarify PCS/Battery specs, or answer proposal questions.")
+    user_question = st.text_area("Ask FlexBot anything...")
+
+    if user_question:
+        with st.spinner("FlexBot is thinking..."):
+            openai.api_key = st.secrets["OPENAI_API_KEY"]
+            try:
+                response = openai.ChatCompletion.create(
+                    model="gpt-4",
+                    messages=[
+                        {"role": "system", "content": (
+                            "You are FlexBot, the AI assistant for FlexGen's proposal generator. "
+                            "You help answer questions about PCS specs, batteries, proposal formatting, and block count calculations. "
+                            "Respond with clarity, helpfulness, and accuracy."
+                        )},
+                        {"role": "user", "content": user_question}
+                    ]
+                )
+                st.success(response.choices[0].message.content.strip())
+            except Exception as e:
+                st.error(f"⚠️ FlexBot ran into an error: {e}")
 
 # === Scope + Currency ===
 col1, col2 = st.columns(2)
