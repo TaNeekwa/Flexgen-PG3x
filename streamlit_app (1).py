@@ -137,10 +137,6 @@ with col2:
         help="Drop the input form here to auto-fill fields.",
     )
 
-    if uploaded_form:
-        st.markdown("### 📥 Open Full Form in Excel")
-        st.markdown(get_excel_download_link(uploaded_form), unsafe_allow_html=True)
-
         # Reset again before reading with pandas
         uploaded_form.seek(0)
         try:
