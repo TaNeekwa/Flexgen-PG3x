@@ -32,7 +32,7 @@ st.markdown(
     /* Text in select and dropdown */
     div[data-baseweb="select"] div,
     div[data-baseweb="option"] {
-        color: black !important;
+        color: white !important;
         font-family: 'Century Gothic', sans-serif !important;
     }
 
