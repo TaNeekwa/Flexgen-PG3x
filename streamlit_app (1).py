@@ -18,22 +18,25 @@ if "authenticated" not in st.session_state:
 if not st.session_state.authenticated:
     # Styled login layout with logo and black box
     st.markdown("""
-        <div style='display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 40px;'>
-            <img src='https://raw.githubusercontent.com/TaNeekwa/Flexgen-PG3x/main/FlexGen_Primary_Logo_-_Gradient.svg.png' width='250' style='margin-bottom: 20px;' />
-            <div style='background-color: #111; padding: 40px; border-radius: 12px; width: 100%; max-width: 400px; box-shadow: 0 4px 20px rgba(0,0,0,0.4);'>
-                <h1 style='color: white; text-align: center; margin-bottom: 30px;'>🔐 Login</h1>
+        <div style='display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 60px;'>
+            <div style='background-color: #111; padding: 40px 30px; border-radius: 12px; width: 100%; max-width: 420px; box-shadow: 0 4px 20px rgba(0,0,0,0.4); text-align: center;'>
+                <img src='https://raw.githubusercontent.com/TaNeekwa/Flexgen-PG3x/main/FlexGen_Primary_Logo_-_Gradient.svg.png' width='180' style='margin-bottom: 20px;' />
+                <h2 style='color: white; margin-bottom: 25px;'>🔐 Login</h2>
     """, unsafe_allow_html=True)
 
-    username = st.text_input("Username", key="login_user_input")
-    password = st.text_input("Password", type="password", key="login_pass_input")
+    username = st.text_input("Username", key="login_user_input", label_visibility="visible")
+    password = st.text_input("Password", type="password", key="login_pass_input", label_visibility="visible")
 
-    if st.button("Login"):
+    login_clicked = st.button("Login", use_container_width=True)
+
+    if login_clicked:
         if username in USER_CREDENTIALS and USER_CREDENTIALS[username] == password:
             st.session_state.authenticated = True
-            st.rerun()  # ✅ Use st.rerun() instead of deprecated experimental_rerun
+            st.rerun()
         else:
             st.error("Invalid username or password.")
 
+    # Close the black box and outer container
     st.markdown("</div></div>", unsafe_allow_html=True)
     st.stop()
 # === LOGOUT BUTTON (only show when authenticated) ===
