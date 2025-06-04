@@ -127,7 +127,8 @@ st.markdown("""
     <p style="font-size: 18px;">Enter project details below to generate your custom proposal.</p>
 </div>
 """, unsafe_allow_html=True)
-
+# ✅ Add spacing between title and form section
+st.markdown("<div style='margin-top: 50px;'></div>", unsafe_allow_html=True)
 # ✅ Add divider here
 st.markdown("<hr style='margin-top: -10px; margin-bottom: 20px;'>", unsafe_allow_html=True)
 
