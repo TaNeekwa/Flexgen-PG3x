@@ -6,25 +6,6 @@ st.set_page_config(page_title="Proposal Generator", layout="wide")
 st.title("⚡ Proposal Generator - FlexGen Edition")
 st.markdown("Enter project details below to generate your custom proposal.")
 
-# === Proposal Type Selector ===
-proposal_type = st.selectbox("🧩 Proposal Type", ["EMS Proposal", "Full Product Proposal"])
-st.markdown(f"You selected: **{proposal_type}**")
-
-# === Conditional Section Based on Proposal Type ===
-if proposal_type == "EMS Proposal":
-    st.subheader("🔌 EMS Proposal Configuration")
-    
-    ems_comm_protocol = st.selectbox("EMS Communication Protocol", ["Modbus TCP", "DNP3", "IEC 61850", "Custom"])
-    ems_rack_type = st.selectbox("EMS Rack Type", ["Standard Rack", "Outdoor Cabinet", "Custom Integration"])
-    ems_networking = st.selectbox("Networking Requirements", ["Basic", "Redundant", "Isolated Secure VLAN"])
-
-elif proposal_type == "Full Product Proposal":
-    st.subheader("🏗️ Full Product Configuration")
-
-    enclosure_type = st.selectbox("Enclosure Type", ["ISO Container", "Walk-in Enclosure", "Custom Built"])
-    hvac_option = st.selectbox("HVAC Type", ["Split System", "Packaged Unit", "Free Cooling", "None"])
-    inverter_mounting = st.selectbox("Inverter Mounting", ["Skid Mounted", "Pad Mounted", "Integrated"])
-
 # === Project Info ===
 with st.expander("📁 Project Information", expanded=True):
     proposal_id = st.text_input("Proposal ID")
