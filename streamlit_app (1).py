@@ -195,9 +195,6 @@ with st.expander("BD Details", expanded=True):
 
 # === Divider ===
 st.markdown("<hr style='margin-top: 25px; margin-bottom: 10px;'>", unsafe_allow_html=True)
-# === FlexBot AI Assistant ===
-st.markdown("<hr style='margin-top: 25px; margin-bottom: 10px;'>", unsafe_allow_html=True)
-st.markdown("### 🤖 <b>FlexBot AI Assistant</b>", unsafe_allow_html=True)
 
 # === FlexBot Assistant Floating Box ===
 st.markdown("""
