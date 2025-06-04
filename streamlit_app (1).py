@@ -139,7 +139,7 @@ elif proposal_type == "Full Product Proposal":
 
 # === Project & System Info ===
 st.markdown("<hr>", unsafe_allow_html=True)
-col1, col2 = st.columns(2)
+col1, spacer, col2 = st.columns([2, 0.4, 3])  # Correct use of ratio-based columns
 
 with col1:
     st.markdown("### 📁 <b>Project Information</b>", unsafe_allow_html=True)
