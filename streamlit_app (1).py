@@ -267,35 +267,6 @@ with st.sidebar:
         """,
         unsafe_allow_html=True
     )
- # === Simulated Floating FlexBot Assistant (collapsible bottom-right box) ===
-with st.container():
-    col1, col2, col3 = st.columns([6, 1, 2])  # Push to bottom-right look
-
-    with col3:
-        with st.expander("💬 Chat with FlexBot", expanded=False):
-            st.markdown("Ask about PCS sizing, battery specs, block counts, proposal flow, or anything else.")
-
-            user_query = st.text_input("Type your question:", key="flexbot_query")
-
-            if st.button("Ask FlexBot", key="ask_flexbot_btn"):
-                if user_query.strip():
-                    with st.spinner("FlexBot is thinking..."):
-                        try:
-                            openai.api_key = st.secrets["OPENAI_API_KEY"]
-                            response = openai.ChatCompletion.create(
-                                model="gpt-4",
-                                messages=[
-                                    {"role": "system", "content": (
-                                        "You are FlexBot, the AI assistant for FlexGen's proposal generator. "
-                                        "You help with PCS/battery specs, configuration logic, scope questions, and sizing formulas."
-                                    )},
-                                    {"role": "user", "content": user_query}
-                                ]
-                            )
-                            answer = response.choices[0].message.content.strip()
-                            st.success(answer)
-                        except Exception as e:
-                            st.error(f"⚠️ FlexBot error: {e}")
 # === Submission Buttons ===
 st.markdown("""
 <style>
