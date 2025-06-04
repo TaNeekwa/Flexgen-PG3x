@@ -208,11 +208,8 @@ with st.sidebar:
              caption="Quote of the Day", width=140)
 
     # Second image from upload
-    try:
-        uploaded_logo = Image.open("2025-06-03 224337.png")
-        st.image(uploaded_logo, caption="FlexGen Logo", width=150)
-    except:
-        st.warning("Local logo image not found.")
+    st.image("st.image("https://github.com/TaNeekwa/Flexgen-PG3x/blob/main/Pictures/Screenshot%202025-06-03%20224827.png?raw=true",
+             caption="Developed by FlexGen, width=140)")
 
     st.markdown('<p style="font-size: 12px; color: gray; text-align: center;">Powered by FlexGen Proposal Generator</p>', unsafe_allow_html=True)
 
