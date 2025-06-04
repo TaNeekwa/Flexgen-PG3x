@@ -278,7 +278,7 @@ div.stButton > button {
     border-radius: 10px !important;
     padding: 0.5rem 1.5rem !important;
     font-weight: 600 !important;
-    border: none !important;
+    border: white !important;
     text-align: center !important;
 }
 div.stButton > button:hover {
