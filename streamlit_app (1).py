@@ -8,43 +8,44 @@ try:
 except ImportError:
     openpyxl = None
 
-# === Page Settings ===
-st.set_page_config(page_title="Proposal Generator", layout="wide")
-
 # === LOGIN LOGIC WITH STYLING ===
 if "authenticated" not in st.session_state:
     st.session_state.authenticated = False
 
 if not st.session_state.authenticated:
-    # Centered FlexGen logo
+    # Logo
     st.markdown("""
         <div style='display: flex; flex-direction: column; align-items: center; margin-top: 40px;'>
-            <img src='https://raw.githubusercontent.com/TaNeekwa/Flexgen-PG3x/main/FlexGen_Primary_Logo_-_Gradient.svg.png' width='200' style='margin-bottom: 20px;' />
+            <img src='https://raw.githubusercontent.com/TaNeekwa/Flexgen-PG3x/main/FlexGen_Primary_Logo_-_Gradient.svg.png' width='200' style='margin-bottom: 30px;' />
         </div>
     """, unsafe_allow_html=True)
 
-    # Centered login container
+    # Login card wrapper
     with st.container():
-        st.markdown("""
-            <div style='display: flex; justify-content: center;'>
-                <div style='background-color: #111; padding: 30px 25px; border-radius: 12px; width: 100%; max-width: 400px; box-shadow: 0 4px 20px rgba(0,0,0,0.4);'>
-        """, unsafe_allow_html=True)
+        # Card layout using columns to center
+        col1, col2, col3 = st.columns([1, 2, 1])
+        with col2:
+            st.markdown("""
+                <div style='background-color: #111; padding: 30px 25px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.4);'>
+                    <h3 style='color: white; text-align: center; margin-bottom: 20px;'>🔐 Login</h3>
+            """, unsafe_allow_html=True)
 
-        st.markdown("<h3 style='color: white; text-align: center; margin-bottom: 20px;'>🔐 Login</h3>", unsafe_allow_html=True)
+            username = st.text_input("Username", placeholder="Enter username", label_visibility="collapsed", key="login_user_input")
+            password = st.text_input("Password", type="password", placeholder="Enter password", label_visibility="collapsed", key="login_pass_input")
 
-        username = st.text_input("Username", key="login_user_input", placeholder="Enter username", label_visibility="collapsed")
-        password = st.text_input("Password", type="password", key="login_pass_input", placeholder="Enter password", label_visibility="collapsed")
+            login_clicked = st.button("Login", use_container_width=True)
 
-        if st.button("Login", use_container_width=True):
-            if username in USER_CREDENTIALS and USER_CREDENTIALS[username] == password:
-                st.session_state.authenticated = True
-                st.rerun()
-            else:
-                st.error("Invalid username or password.")
+            if login_clicked:
+                if username in USER_CREDENTIALS and USER_CREDENTIALS[username] == password:
+                    st.session_state.authenticated = True
+                    st.rerun()
+                else:
+                    st.error("Invalid username or password.")
 
-        st.markdown("</div></div>", unsafe_allow_html=True)
+            st.markdown("</div>", unsafe_allow_html=True)
 
     st.stop()
+
 # === Session State for Dark Mode ===
 if "dark_mode" not in st.session_state:
     st.session_state.dark_mode = False
