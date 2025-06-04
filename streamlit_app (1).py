@@ -318,7 +318,7 @@ with st.container():
   # === Sidebar Layout: Theme Toggle + Summary + Footer ===
 with st.sidebar:
     # === Proposal Preview ===
-    st.markdown("### 🧾 Proposal Summary")
+    st.markdown("### 🧾 Proposal Preview")
     st.write(f"**Proposal Type:** {proposal_type}")
     st.write(f"**Customer:** {customer_name or '—'}")
     st.write(f"**Project:** {project_name or '—'}")
