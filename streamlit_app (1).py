@@ -39,6 +39,21 @@ st.markdown("""
         border: 1px solid black !important;
         border-radius: 4px !important;
     }
+    
+/* Fix text color inside dropdowns and inputs */
+.css-1wa3eu0, .css-1okebmr, .css-1g6gooi, .css-14el2xx, .css-qc6sy-singleValue {
+    color: white !important;
+}
+
+/* Force white text for selected option + dropdown items */
+div[data-baseweb="select"] * {
+    color: white !important;
+}
+
+/* Fix placeholder and input text color */
+input, select, textarea {
+    color: white !important;
+}
 
     /* Hover / active state for dropdowns */
     .stSelectbox:hover, .stTextInput:hover, .stNumberInput:hover {
