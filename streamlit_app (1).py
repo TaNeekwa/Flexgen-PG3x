@@ -13,16 +13,6 @@ def get_excel_download_link(uploaded_file):
     b64 = base64.b64encode(uploaded_file.read()).decode()
     return f'<a href="data:application/octet-stream;base64,{b64}" download="InputForm.xlsx">📥 Download and view in Excel</a>'
 
-        # Render Excel file as embedded viewer in browser
-        href = f'''
-            <iframe
-                src="data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,{b64}"
-                width="100%" height="600px"
-                style="border: 1px solid #ccc; border-radius: 6px;"
-            ></iframe>
-        '''
-        st.markdown(href, unsafe_allow_html=True)
-
 # === Page Settings (MUST be first) ===
 st.set_page_config(page_title="Proposal Generator", layout="wide")
 
