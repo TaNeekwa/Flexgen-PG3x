@@ -129,12 +129,6 @@ st.markdown("""
 """, unsafe_allow_html=True)
 # ✅ Add spacing between title and form section
 st.markdown("<hr style='border: 3px solid black; margin-top: 20px; margin-bottom: 20px;'>", unsafe_allow_html=True)
-# ✅ Add divider here
-st.markdown("<hr style='margin-top: -10px; margin-bottom: 20px;'>", unsafe_allow_html=True)
-
-
-# ✅ Add divider here
-st.markdown("<hr style='margin-top: -10px; margin-bottom: 20px;'>", unsafe_allow_html=True)
 
 # === Proposal Type + Input Form Upload ===
 col1, spacer, col2 = st.columns([2, 0.4, 3])  # Adjusted layout
