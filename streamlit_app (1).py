@@ -102,9 +102,15 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# === Proposal Type ===
-proposal_type = st.selectbox("🧩 Proposal Type", ["EMS Proposal", "Full Product Proposal"])
-st.markdown(f"You selected: **{proposal_type}**")
+# === Proposal Type + Input Form Upload ===
+col1, col2 = st.columns([2, 3])
+
+with col1:
+    proposal_type = st.selectbox("🧩 Proposal Type", ["EMS Proposal", "Full Product Proposal"])
+    st.markdown(f"You selected: **{proposal_type}**")
+
+with col2:
+    uploaded_form = st.file_uploader("📤 Upload Input Form (Excel)", type=["xlsx"], help="Drop the input form here to auto-fill fields.")
 
 # === Conditional Inputs ===
 if proposal_type == "EMS Proposal":
