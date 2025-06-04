@@ -107,7 +107,7 @@ top_col1, top_col2 = st.columns([1, 9])  # Layout split
 
 with top_col1:
     st.markdown("""
-    <div style="padding-top: 5px; text-align: left;">
+    <div style="padding-top: 5px; text-align: center;">
         <span style="font-weight: bold;"></span><br>
     </div>
     """, unsafe_allow_html=True)
