@@ -259,10 +259,6 @@ with st.container():
 
   # === Sidebar Layout: Theme Toggle + Summary + Footer ===
 with st.sidebar:
-    # === 🌞🌙 Light / Dark Mode Toggle ===
-    st.markdown("### 🌓 Light / Dark Mode")
-    dark_mode = st.toggle("🌞 Light / 🌙 Dark", key="theme_toggle")
-
     # === Proposal Summary ===
     st.markdown("### 🧾 Proposal Summary")
     st.write(f"**Proposal Type:** {proposal_type}")
