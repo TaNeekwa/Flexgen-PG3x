@@ -4,7 +4,6 @@
    - pip
    - pip:
      - streamlit
-     - openai
      - pillow
 +    - pandas
 +    - openpyxl
