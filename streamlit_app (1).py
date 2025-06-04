@@ -181,22 +181,24 @@ with st.expander("🔋 System Configuration", expanded=True):
     pcs_size = st.number_input("PCS Size per Unit (MW)", min_value=0.0, step=0.1)
     pcs_qty = st.number_input("Number of PCS Blocks", min_value=0, step=1)
 
-# === Scope of Services ===
-with st.expander("🛠️ Scope of Services", expanded=True):
-    field_commissioning = st.checkbox("Field Commissioning Services")
-    grid_testing = st.checkbox("Grid Qualification Testing")
-    performance_guarantees = st.checkbox("Performance Guarantees")
-    onsite_support = st.checkbox("Onsite Support")
-    spare_parts = st.checkbox("Spare Parts Inventory")
-    preventative_maintenance = st.checkbox("Preventative Maintenance")
-    oem_warranty = st.checkbox("OEM Warranty Extension")
-    custom_scope = st.checkbox("Custom Scope Needed?")
-    custom_scope_details = st.text_area("If custom, please describe the scope", disabled=not custom_scope)
+col1, col2 = st.columns(2)
 
-# === Currency & Region ===
-with st.expander("💱 Currency & Region", expanded=True):
-    currency = st.radio("Currency for Proposal", ["USD", "EUR", "GBP", "Custom"])
-    custom_fx = st.number_input("Custom FX Rate (1 USD = ?)", min_value=0.0, step=0.01, disabled=(currency != "Custom"))
+with col1:
+    with st.expander("🛠️ Scope of Services", expanded=True):
+        field_commissioning = st.checkbox("Field Commissioning Services")
+        grid_testing = st.checkbox("Grid Qualification Testing")
+        performance_guarantees = st.checkbox("Performance Guarantees")
+        onsite_support = st.checkbox("Onsite Support")
+        spare_parts = st.checkbox("Spare Parts Inventory")
+        preventative_maintenance = st.checkbox("Preventative Maintenance")
+        oem_warranty = st.checkbox("OEM Warranty Extension")
+        custom_scope = st.checkbox("Custom Scope Needed?")
+        custom_scope_details = st.text_area("If custom, please describe the scope", disabled=not custom_scope)
+
+with col2:
+    with st.expander("💱 Currency & Region", expanded=True):
+        currency = st.radio("Currency for Proposal", ["USD", "EUR", "GBP", "Custom"])
+        custom_fx = st.number_input("Custom FX Rate (1 USD = ?)", min_value=0.0, step=0.01, disabled=(currency != "Custom"))
 
 # === Submission ===
 if st.button("🚀 Generate Proposal"):
