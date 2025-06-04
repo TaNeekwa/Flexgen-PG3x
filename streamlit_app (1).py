@@ -149,15 +149,8 @@ with col2:
     )
 
     if uploaded_form:
-        try:
-            ext = os.path.splitext(uploaded_form.name)[1].lower()
-            engine = "xlrd" if ext == ".xls" else "openpyxl"
-            df_preview = pd.read_excel(uploaded_form, engine=engine, nrows=10)
-            
-            with st.expander("📄 Preview Uploaded Input Form", expanded=False):
-                st.dataframe(df_preview, use_container_width=True)
-        except Exception as e:
-            st.error(f"⚠️ Could not preview file: {e}")
+    st.markdown("### 🖼️ Visual Input Form Preview (Original Format)")
+    show_excel_as_downloadable_preview(uploaded_form)
   
 # === Conditional Inputs ===
 if proposal_type == "EMS Proposal":
