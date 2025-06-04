@@ -310,6 +310,27 @@ with st.container():
                         except Exception as e:
                             st.error(f"⚠️ FlexBot error: {e}")
 # === Submission Buttons ===
+st.markdown("""
+<style>
+.button-row {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+button[kind="secondary"] > div[data-testid="baseButton-secondary"] {
+    color: white !important;
+}
+div.stButton > button {
+    background-color: #111 !important;
+    color: white !important;
+    border-radius: 10px;
+    padding: 0.5rem 1.5rem;
+    font-weight: 600;
+    border: none;
+}
+</style>
+""", unsafe_allow_html=True)
 col1, col2 = st.columns([1, 1])
 with col1:
     if st.button("🚀 Generate Proposal"):
