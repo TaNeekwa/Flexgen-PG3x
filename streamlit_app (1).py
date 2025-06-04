@@ -7,23 +7,27 @@ st.set_page_config(page_title="Proposal Generator", layout="wide")
 st.markdown(
     """
     <style>
-    body {
+    html, body, [class*="css"] {
         background-color: white !important;
         color: black !important;
         font-family: 'Century Gothic', sans-serif !important;
     }
-    .reportview-container .markdown-text-container, .sidebar .sidebar-content {
+    .stApp {
+        background-color: white !important;
+    }
+    h1, h2, h3, h4, h5, h6, p, label, div, input, select, textarea {
         color: black !important;
         font-family: 'Century Gothic', sans-serif !important;
     }
-    h1, h2, h3, h4, p, label, input, select, textarea {
+    .stMarkdown, .stTextInput, .stSelectbox, .stDateInput, .stNumberInput, .stRadio {
         font-family: 'Century Gothic', sans-serif !important;
-        color: #000000 !important;
+        color: black !important;
     }
     </style>
     """,
     unsafe_allow_html=True
 )
+
 
 # === Logo + Title Section (Single clean block) ===
 st.markdown(
