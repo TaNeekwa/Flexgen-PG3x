@@ -2,7 +2,8 @@ import streamlit as st
 import pandas as pd
 import os
 import base64
-
+ 👇 Import your login credentials
+from Login.Username.Password.LoginInfo import USER_CREDENTIALS
 try:
     import openpyxl
 except ImportError:
@@ -10,7 +11,24 @@ except ImportError:
 
 # === Page Settings ===
 st.set_page_config(page_title="Proposal Generator", layout="wide")
+# === 🔐 LOGIN LOGIC ===
+if "authenticated" not in st.session_state:
+    st.session_state.authenticated = False
 
+if not st.session_state.authenticated:
+    st.title("🔐 Login")
+
+    username = st.text_input("Username")
+    password = st.text_input("Password", type="password")
+
+    if st.button("Login"):
+        if username in USER_CREDENTIALS and USER_CREDENTIALS[username] == password:
+            st.session_state.authenticated = True
+            st.experimental_rerun()
+        else:
+            st.error("Invalid username or password.")
+
+    st.stop()  # 🔒 Halt execution until authenticated
 # === Session State for Dark Mode ===
 if "dark_mode" not in st.session_state:
     st.session_state.dark_mode = False
