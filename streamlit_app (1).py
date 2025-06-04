@@ -300,6 +300,21 @@ div.stButton > button:hover {
 }
 </style>
 """, unsafe_allow_html=True)
+}
+  # === Header Block (outside of columns) ===
+with st.container():
+    st.markdown("""
+    <div style="width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; padding-top: 10px;">
+        <img src="https://raw.githubusercontent.com/TaNeekwa/Flexgen-PG3x/main/FlexGen_Primary_Logo_-_Gradient.svg.png" 
+             alt="FlexGen Logo" width="300" style="margin-bottom: 10px;" />
+        <h1 style="font-size: 42px; text-align: center; margin-top: 0;">
+            Proposal Generator - FlexGen Edition
+        </h1>
+        <p style="font-size: 18px; text-align: center;">
+            Enter project details below to generate your custom proposal.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
 
 with st.container():
     st.markdown('<div class="button-row">', unsafe_allow_html=True)
