@@ -1,8 +1,8 @@
-/Flexgen-PG3x
-├── streamlit_app.py
-├── requirements.txt     ✅ ← newly added
-├── environment.yml      (optional — not used by Streamlit Cloud)
-├── /templates
-│   └── ...
-├── /assets
-└── /utils
+name: flexgen-pg3x
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+    - streamlit
+    - openai
+    - pillow
