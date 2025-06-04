@@ -109,6 +109,9 @@ col1, spacer, col2 = st.columns([2, 0.4, 2])  # Added spacer between the two sec
 with col1:
     proposal_type = st.selectbox("🧩 Proposal Type", ["EMS Proposal", "Full Product Proposal"])
     st.markdown(f"You selected: **{proposal_type}**")
+    # === BD Details, Uploads, Advanced Settings ===
+st.markdown("### 👥 <b>Business Development Details</b>", unsafe_allow_html=True)
+with st.expander("BD Details", expanded=True):
 
 with col2:
     uploaded_form = st.file_uploader("📤 Upload Input Form (Excel)", type=["xlsx"], help="Drop the input form here to auto-fill fields.")
