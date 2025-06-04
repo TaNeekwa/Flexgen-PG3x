@@ -300,7 +300,7 @@ div.stButton > button:hover {
 }
 </style>
 """, unsafe_allow_html=True)
-}
+)
   # === Header Block (outside of columns) ===
 with st.container():
     st.markdown("""
