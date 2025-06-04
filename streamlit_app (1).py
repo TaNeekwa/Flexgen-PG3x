@@ -3,8 +3,6 @@ import openai
 from PIL import Image
 # === Page Settings (MUST be first) ===
 st.set_page_config(page_title="Proposal Generator", layout="wide")
-with open("flexbot_component/flexbot_popup.html", "r") as f:
-    st.components.v1.html(f.read(), height=500, scrolling=False)
 
 # === Theme Toggle ===
 st.markdown("##### Switch Theme Mode")
