@@ -1,10 +1,58 @@
 import streamlit as st
 
-# Page settings
+# Page settings — MUST be first!
 st.set_page_config(page_title="Proposal Generator", layout="wide")
 
-st.title("⚡ Proposal Generator - FlexGen Edition")
-st.markdown("Enter project details below to generate your custom proposal.")
+# === Global Style Overrides ===
+st.markdown(
+    """
+    <style>
+    body {
+        background-color: white !important;
+        color: black !important;
+        font-family: 'Century Gothic', sans-serif !important;
+    }
+    .reportview-container .markdown-text-container, .sidebar .sidebar-content {
+        color: black !important;
+        font-family: 'Century Gothic', sans-serif !important;
+    }
+    h1, h2, h3, h4, p, label, input, select, textarea {
+        font-family: 'Century Gothic', sans-serif !important;
+        color: #000000 !important;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+# === Logo + Title Section (Single clean block) ===
+st.markdown(
+    """
+    <div style="text-align: center;">
+        <img src="https://raw.githubusercontent.com/TaNeekwa/Flexgen-PG3x/main/FlexGen_Primary_Logo_-_Gradient.svg.png" width="200"/>
+        <h1 style="font-size: 40px; margin-top: 10px;">Proposal Generator - FlexGen Edition ⚡</h1>
+        <p style="font-size: 18px;">Enter project details below to generate your custom proposal.</p>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
+# === Proposal Type Selector ===
+proposal_type = st.selectbox("🧩 Proposal Type", ["EMS Proposal", "Full Product Proposal"])
+st.markdown(f"You selected: **{proposal_type}**")
+
+# === Conditional Section Based on Proposal Type ===
+if proposal_type == "EMS Proposal":
+    st.subheader("🔌 EMS Proposal Configuration")
+    ems_comm_protocol = st.selectbox("EMS Communication Protocol", ["Modbus TCP", "DNP3", "IEC 61850", "Custom"])
+    ems_rack_type = st.selectbox("EMS Rack Type", ["Standard Rack", "Outdoor Cabinet", "Custom Integration"])
+    ems_networking = st.selectbox("Networking Requirements", ["Basic", "Redundant", "Isolated Secure VLAN"])
+
+elif proposal_type == "Full Product Proposal":
+    st.subheader("🏗️ Full Product Configuration")
+    enclosure_type = st.selectbox("Enclosure Type", ["ISO Container", "Walk-in Enclosure", "Custom Built"])
+    hvac_option = st.selectbox("HVAC Type", ["Split System", "Packaged Unit", "Free Cooling", "None"])
+    inverter_mounting = st.selectbox("Inverter Mounting", ["Skid Mounted", "Pad Mounted", "Integrated"])
 
 # === Project Info ===
 with st.expander("📁 Project Information", expanded=True):
@@ -12,7 +60,7 @@ with st.expander("📁 Project Information", expanded=True):
     customer_name = st.text_input("Customer Name")
     project_name = st.text_input("Project Name")
     country = st.selectbox("Country", ["USA", "Canada", "Germany", "UK", "Sweden", "Argentina"])
-    
+
     if country == "USA":
         state = st.selectbox("State", [
             "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut",
@@ -60,4 +108,3 @@ with st.expander("💱 Currency & Region", expanded=True):
 # === Submission ===
 if st.button("🚀 Generate Proposal"):
     st.success("Proposal generation initiated!")
-    # This is where you'll connect it to logic for filling the proposal template
