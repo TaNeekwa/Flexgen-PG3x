@@ -211,7 +211,7 @@ with st.sidebar:
 
     # Second image from upload
     try:
-        uploaded_logo = Image.open("cc7a2731-9c37-4578-82f3-2c0a22a8c554.png")
+        uploaded_logo = Image.open("2025-06-03 224337.png")
         st.image(uploaded_logo, caption="FlexGen Logo", width=150)
     except:
         st.warning("Local logo image not found.")
