@@ -254,11 +254,13 @@ with st.container():
         unsafe_allow_html=True
     )
 
-    # === Sidebar Theme Toggle (Top-Left) ===
+  # === Sidebar Layout: Theme Toggle + Summary + Footer ===
 with st.sidebar:
-    st.markdown("### 🎨 Theme Mode")
-    dark_mode = st.toggle("🌙 Dark Mode", key="theme_toggle")
+    # === 🌞🌙 Light / Dark Mode Toggle ===
+    st.markdown("### 🌓 Light / Dark Mode")
+    dark_mode = st.toggle("🌞 Light / 🌙 Dark", key="theme_toggle")
 
+    # === Proposal Summary ===
     st.markdown("### 🧾 Proposal Summary")
     st.write(f"**Proposal Type:** {proposal_type}")
     st.write(f"**Customer:** {customer_name or '—'}")
