@@ -118,7 +118,10 @@ input, select, textarea {
 .st-expander > summary {
     color: #1a1a1a !important;
 }
-</style>"""
+# Apply theme (dark/light)
+st.markdown(css_theme, unsafe_allow_html=True)
+
+# Custom button styling block (separate)
 st.markdown("""
 <style>
 .button-row {
@@ -145,7 +148,7 @@ div.stButton > button:hover {
     color: white !important;
 }
 </style>
-st.markdown(css_theme, unsafe_allow_html=True)
+""", unsafe_allow_html=True)  # ✅ Don't forget this!
 
     # ✅ INSERT THIS IMMEDIATELY HERE, BEFORE ANY UI:
 st.markdown(css_theme, unsafe_allow_html=True)
