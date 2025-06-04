@@ -34,7 +34,7 @@ if not st.session_state.authenticated:
                 </div>
             """, unsafe_allow_html=True)
             # 👉 Spacer to push the inputs down slightly from the login box
-            st.markdown("<div style='height: 25px;'></div>", unsafe_allow_html=True)
+            st.markdown("<div style='height: 35px;'></div>", unsafe_allow_html=True)
 
             # Inputs
             username = st.text_input("Username", placeholder="Enter username", label_visibility="collapsed", key="login_user_input")
