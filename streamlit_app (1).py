@@ -207,7 +207,7 @@ st.sidebar.markdown("""
          width="140" style="margin-bottom: 10px;" alt="Your First Image" />
 
     <!-- Second image (FlexGen logo or another) -->
-    <img src="https://github.com/TaNeekwa/Flexgen-PG3x/blob/main/Pictures/Screenshot%202025-06-03%20224337.png?raw=true" 
+    <img src="https://raw.githubusercontent.com/TaNeekwa/Flexgen-PG3x/refs/heads/main/Pictures/Screenshot%202025-06-03%20224337.png" 
          width="150" style="margin-top: 10px;" alt="FlexGen Logo" />
 
     <p style="font-size: 12px; color: gray;">Powered by FlexGen Proposal Generator</p>
