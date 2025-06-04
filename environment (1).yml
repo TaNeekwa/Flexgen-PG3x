@@ -1,8 +1,8 @@
 /Flexgen-PG3x
-├── streamlit_app.py          ← your main Streamlit UI logic
-├── environment.yml           ← dependencies (already correct)
+├── streamlit_app.py
+├── requirements.txt     ✅ ← newly added
+├── environment.yml      (optional — not used by Streamlit Cloud)
 ├── /templates
-│   ├── ems_proposal_template.pptx
-│   └── full_product_proposal_template.pptx
-├── /assets                   ← (optional) for logos, fonts, etc.
-└── /utils                    ← (optional) for helper Python functions
+│   └── ...
+├── /assets
+└── /utils
