@@ -16,7 +16,7 @@ if not st.session_state.authenticated:
     # Logo
     st.markdown("""
         <div style='display: flex; flex-direction: column; align-items: center; margin-top: 40px;'>
-            <img src='https://raw.githubusercontent.com/TaNeekwa/Flexgen-PG3x/main/FlexGen_Primary_Logo_-_Gradient.svg.png' width='200' style='margin-bottom: 30px;' />
+            <img src='https://raw.githubusercontent.com/TaNeekwa/Flexgen-PG3x/main/FlexGen_Primary_Logo_-_Gradient.svg.png' width='300' style='margin-bottom: 40px;' />
         </div>
     """, unsafe_allow_html=True)
 
