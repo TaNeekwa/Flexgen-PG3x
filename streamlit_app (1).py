@@ -199,6 +199,21 @@ with st.sidebar:
     st.write(f"**Battery:** {battery_qty}x{battery_size} MWh ({battery_brand})")
     st.write(f"**PCS:** {pcs_qty}x{pcs_size} MW ({pcs_brand})")
     st.write(f"**Currency:** {currency}")
+st.sidebar.markdown("""
+<br><br><hr>
+<div style="text-align: center; margin-top: 30px;">
+    <!-- First image -->
+    <img src="https://your-first-image-link.com/image1.png" 
+         width="140" style="margin-bottom: 10px;" alt="Your First Image" />
+
+    <!-- Second image (FlexGen logo or another) -->
+    <img src="https://raw.githubusercontent.com/TaNeekwa/Flexgen-PG3x/main/FlexGen_Primary_Logo_-_Gradient.svg.png" 
+         width="150" style="margin-top: 10px;" alt="FlexGen Logo" />
+
+    <p style="font-size: 12px; color: gray;">Powered by FlexGen Proposal Generator</p>
+</div>
+""", unsafe_allow_html=True)
+
 
 # === Submission Buttons ===
 col1, col2 = st.columns([1, 1])
