@@ -1,6 +1,5 @@
 import streamlit as st
 
-
 # === Page Settings (MUST be first) ===
 st.set_page_config(page_title="Proposal Generator", layout="wide")
 css_theme = """
@@ -118,13 +117,13 @@ else:
     css_theme = """
     <style>
     body, .stApp {
-        background-color: white !important;
+        background-color: #ffffff !important;
+        color: #1a1a1a !important;
         font-family: 'Century Gothic', sans-serif !important;
-        color: black !important;
     }
 
     h1, h2, h3, h4, p, label, div, span {
-        color: black !important;
+        color: #1a1a1a !important;
     }
 
     img {
@@ -141,30 +140,31 @@ else:
     .stTextArea > div > textarea,
     .stRadio > div > label,
     .stCheckbox > div {
-        background-color: white !important;
-        color: black !important;
-        border: 1px solid black !important;
-        border-radius: 4px !important;
+        background-color: #ffffff !important;
+        color: #1a1a1a !important;
+        border: 1px solid #d9d9d9 !important;
+        border-radius: 6px !important;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.05) !important;
     }
 
     .css-1wa3eu0, .css-1okebmr, .css-1g6gooi, .css-14el2xx, .css-qc6sy-singleValue {
-        color: black !important;
+        color: #1a1a1a !important;
     }
 
     div[data-baseweb="select"] * {
-        color: black !important;
+        color: #1a1a1a !important;
     }
 
     input, select, textarea {
-        color: black !important;
+        color: #1a1a1a !important;
     }
 
     .stSelectbox:hover, .stTextInput:hover, .stNumberInput:hover {
-        background-color: #f2f2f2 !important;
+        background-color: #f7f7f7 !important;
     }
 
     .st-expander > summary {
-        color: black !important;
+        color: #1a1a1a !important;
     }
     </style>
     """
