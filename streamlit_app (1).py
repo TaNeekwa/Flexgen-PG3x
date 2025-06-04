@@ -131,34 +131,17 @@ with col2:
         type=["xlsx", "xlsm", "xls"],
         help="Drop the input form here to auto-fill fields.",
     )
+
     if uploaded_form:
-          if openpyxl is None:
-            st.error(
-                "Could not preview file: openpyxl is not installed. "
-                "Install it with `pip install openpyxl`."
-            )
-        else:
-            try:
-                df_preview = pd.read_excel(uploaded_form, engine="openpyxl", nrows=10)
-                with st.expander("📄 Preview Uploaded Input Form", expanded=False):
-                    st.dataframe(df_preview, use_container_width=True)
-            except Exception as e:
-                st.error(f"Could not preview file: {e}") if openpyxl is None:
-            st.error(
-                "Could not preview file: openpyxl is not installed. "
-                "Install it with `pip install openpyxl`."
-            )
-        else:
-            try:
-                df_preview = pd.read_excel(
-                    uploaded_form, engine="openpyxl", nrows=10
-                )
-                with st.expander(
-                    "📄 Preview Uploaded Input Form", expanded=False
-                ):
-                    st.dataframe(df_preview, use_container_width=True)
-            except Exception as e:
-                st.error(f"Could not preview file: {e}")
+        try:
+            ext = os.path.splitext(uploaded_form.name)[1].lower()
+            engine = "xlrd" if ext == ".xls" else "openpyxl"
+            df_preview = pd.read_excel(uploaded_form, engine=engine, nrows=10)
+            
+            with st.expander("📄 Preview Uploaded Input Form", expanded=False):
+                st.dataframe(df_preview, use_container_width=True)
+        except Exception as e:
+            st.error(f"⚠️ Could not preview file: {e}")
   
 # === Conditional Inputs ===
 if proposal_type == "EMS Proposal":
