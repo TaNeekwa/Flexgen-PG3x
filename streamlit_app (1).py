@@ -147,39 +147,41 @@ elif proposal_type == "Full Product Proposal":
     hvac_option = st.selectbox("HVAC Type", ["Split System", "Packaged Unit", "Free Cooling", "None"])
     inverter_mounting = st.selectbox("Inverter Mounting", ["Skid Mounted", "Pad Mounted", "Integrated"])
 
-# === Project Info ===
-with st.expander("📁 Project Information", expanded=True):
-    proposal_id = st.text_input("Proposal ID")
-    customer_name = st.text_input("Customer Name")
-    project_name = st.text_input("Project Name")
-    country = st.selectbox("Country", ["USA", "Canada", "Germany", "UK", "Sweden", "Argentina"])
-    
-    if country == "USA":
-        state = st.selectbox("State", [
-            "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut",
-            "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa",
-            "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan",
-            "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire",
-            "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio",
-            "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota",
-            "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia",
-            "Wisconsin", "Wyoming"
-        ])
-    else:
-        state = None
+col1, col2 = st.columns(2)
 
-    market = st.selectbox("Market", ["ERCOT", "CAISO", "PJM", "UK Grid", "European Grid"])
-    cod = st.date_input("Expected COD (Commercial Operation Date)")
+with col1:
+    with st.expander("📁 Project Information", expanded=True):
+        proposal_id = st.text_input("Proposal ID")
+        customer_name = st.text_input("Customer Name")
+        project_name = st.text_input("Project Name")
+        country = st.selectbox("Country", ["USA", "Canada", "Germany", "UK", "Sweden", "Argentina"])
 
-# === System Configuration ===
-with st.expander("🔋 System Configuration", expanded=True):
-    battery_brand = st.selectbox("Battery Brand", ["CATL", "BYD", "Samsung SDI", "Cornex", "Other"])
-    battery_size = st.number_input("Battery Size per Unit (MWh)", min_value=0.0, step=0.1)
-    battery_qty = st.number_input("Number of Battery Containers", min_value=0, step=1)
+        if country == "USA":
+            state = st.selectbox("State", [
+                "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut",
+                "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa",
+                "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan",
+                "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire",
+                "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio",
+                "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota",
+                "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia",
+                "Wisconsin", "Wyoming"
+            ])
+        else:
+            state = None
 
-    pcs_brand = st.selectbox("PCS Brand", ["EPC Power", "Sungrow", "Sineng", "Power Electronics", "Other"])
-    pcs_size = st.number_input("PCS Size per Unit (MW)", min_value=0.0, step=0.1)
-    pcs_qty = st.number_input("Number of PCS Blocks", min_value=0, step=1)
+        market = st.selectbox("Market", ["ERCOT", "CAISO", "PJM", "UK Grid", "European Grid"])
+        cod = st.date_input("Expected COD (Commercial Operation Date)")
+
+with col2:
+    with st.expander("🔋 System Configuration", expanded=True):
+        battery_brand = st.selectbox("Battery Brand", ["CATL", "BYD", "Samsung SDI", "Cornex", "Other"])
+        battery_size = st.number_input("Battery Size per Unit (MWh)", min_value=0.0, step=0.1)
+        battery_qty = st.number_input("Number of Battery Containers", min_value=0, step=1)
+
+        pcs_brand = st.selectbox("PCS Brand", ["EPC Power", "Sungrow", "Sineng", "Power Electronics", "Other"])
+        pcs_size = st.number_input("PCS Size per Unit (MW)", min_value=0.0, step=0.1)
+        pcs_qty = st.number_input("Number of PCS Blocks", min_value=0, step=1)
 
 col1, col2 = st.columns(2)
 
