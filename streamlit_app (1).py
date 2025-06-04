@@ -281,7 +281,7 @@ st.markdown("""
     <img src="https://github.com/TaNeekwa/Flexgen-PG3x/blob/main/Pictures/Screenshot%202025-06-03%20224337.png?raw=true" 
          width="140" style="margin-bottom: 8px;">
     <p style="font-size: 12px; color: gray;">Developed by FlexGen</p>
-    <p style="font-size: 12px; color: gray;">Powered by FlexGen Proposal Generator</p>
+    <p style="font-size: 12px; color: gray;">Powered by FlexGen</p>
 </div>
 """, unsafe_allow_html=True)
 # === Submission Buttons ===
