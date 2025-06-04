@@ -16,37 +16,34 @@ if "authenticated" not in st.session_state:
     st.session_state.authenticated = False
 
 if not st.session_state.authenticated:
-    # Logo and centered container
+    # Centered FlexGen logo
     st.markdown("""
-        <div style='display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 40px;'>
+        <div style='display: flex; flex-direction: column; align-items: center; margin-top: 40px;'>
             <img src='https://raw.githubusercontent.com/TaNeekwa/Flexgen-PG3x/main/FlexGen_Primary_Logo_-_Gradient.svg.png' width='200' style='margin-bottom: 20px;' />
         </div>
     """, unsafe_allow_html=True)
 
-    # Opening the styled login box wrapper
-    st.markdown("""
-        <div style='display: flex; justify-content: center;'>
-            <div style='background-color: #111; padding: 30px 20px; border-radius: 12px; width: 100%; max-width: 400px; box-shadow: 0 4px 20px rgba(0,0,0,0.4);'>
-                <h2 style='color: white; text-align: center; margin-bottom: 25px;'>🔐 Login</h2>
-    """, unsafe_allow_html=True)
+    # Centered login container
+    with st.container():
+        st.markdown("""
+            <div style='display: flex; justify-content: center;'>
+                <div style='background-color: #111; padding: 30px 25px; border-radius: 12px; width: 100%; max-width: 400px; box-shadow: 0 4px 20px rgba(0,0,0,0.4);'>
+        """, unsafe_allow_html=True)
 
-    # Inputs inside the visual box
-    username = st.text_input("Username", key="login_user_input", placeholder="Enter username", label_visibility="collapsed")
-    password = st.text_input("Password", type="password", key="login_pass_input", placeholder="Enter password", label_visibility="collapsed")
+        st.markdown("<h3 style='color: white; text-align: center; margin-bottom: 20px;'>🔐 Login</h3>", unsafe_allow_html=True)
 
-    login_button = st.button("Login", use_container_width=True)
+        username = st.text_input("Username", key="login_user_input", placeholder="Enter username", label_visibility="collapsed")
+        password = st.text_input("Password", type="password", key="login_pass_input", placeholder="Enter password", label_visibility="collapsed")
 
-    if login_button:
-        if username in USER_CREDENTIALS and USER_CREDENTIALS[username] == password:
-            st.session_state.authenticated = True
-            st.rerun()
-        else:
-            st.error("Invalid username or password.")
+        if st.button("Login", use_container_width=True):
+            if username in USER_CREDENTIALS and USER_CREDENTIALS[username] == password:
+                st.session_state.authenticated = True
+                st.rerun()
+            else:
+                st.error("Invalid username or password.")
 
-    # Close the styled box
-    st.markdown("</div></div>", unsafe_allow_html=True)
+        st.markdown("</div></div>", unsafe_allow_html=True)
 
-    # Stop the app until logged in
     st.stop()
 # === Session State for Dark Mode ===
 if "dark_mode" not in st.session_state:
