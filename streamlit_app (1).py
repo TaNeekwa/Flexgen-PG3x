@@ -258,8 +258,6 @@ with st.sidebar:
         """,
         unsafe_allow_html=True
     )
-  import openai
-
 # === FlexBot AI Assistant ===
 with st.expander("🤖 Need Help? Ask FlexBot", expanded=False):
     st.markdown("Type your question below — FlexBot can help you calculate block counts, clarify PCS/Battery specs, or answer proposal questions.")
