@@ -88,7 +88,7 @@ else:
     }
     </style>"""
 
-  # ✅ Apply styles
+# ✅ Apply styles
 st.markdown(css_theme, unsafe_allow_html=True)
 
 # === Logo + Title Section ===
@@ -103,14 +103,14 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
- === Proposal Type + Input Form Upload ===
+# === Proposal Type + Input Form Upload ===
 col1, spacer, col2 = st.columns([2, 0.4, 2])  # Adjusted layout
 
 with col1:
     proposal_type = st.selectbox("🧩 Proposal Type", ["EMS Proposal", "Full Product Proposal"])
     st.markdown(f"You selected: **{proposal_type}**")
     
-    st.markdown("### 👥 Business Development")  # inline title instead of expander
+    st.markdown("### 👥 Business Development")  # inline title
     bd_rep = st.selectbox("BD Representative", [
         "Bridget Nolan", "Tyler Davis", "Tara Jo Brooks", "Chris Ramirez", "Other"
     ])
@@ -120,6 +120,7 @@ with col2:
         "📤 Upload Input Form (Excel)",
         type=["xlsx"],
         help="Drop the input form here to auto-fill fields."
+    )
 
 # === Conditional Inputs ===
 if proposal_type == "EMS Proposal":
