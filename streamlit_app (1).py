@@ -104,7 +104,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # === Proposal Type + Input Form Upload ===
-col1, spacer, col2 = st.columns([2, 0.4, 2])  # Adjusted layout
+col1, spacer, col2 = st.columns([2, 0.4, 3])  # Adjusted layout
 
 with col1:
     proposal_type = st.selectbox("🧩 Proposal Type", ["EMS Proposal", "Full Product Proposal"])
