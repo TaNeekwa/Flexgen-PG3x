@@ -16,10 +16,6 @@ def get_excel_download_link(uploaded_file):
 # === Page Settings (MUST be first) ===
 st.set_page_config(page_title="Proposal Generator", layout="wide")
 
-# === Theme Toggle ===
-st.markdown("##### Switch Theme Mode")
-dark_mode = st.toggle("🌞 Light / 🌙 Dark")
-
 # === Conditional Styling ===
 if dark_mode:
     css_theme = """<style>
