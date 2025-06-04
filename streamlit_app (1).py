@@ -137,49 +137,54 @@ st.markdown(f"You selected: **{proposal_type}**")
 
 # === Conditional Inputs ===
 if proposal_type == "EMS Proposal":
-    st.subheader("🔌 EMS Proposal Configuration")
+    st.markdown("### 🔌 EMS Proposal Configuration", unsafe_allow_html=True)
     ems_comm_protocol = st.selectbox("EMS Communication Protocol", ["Modbus TCP", "DNP3", "IEC 61850", "Custom"])
     ems_rack_type = st.selectbox("EMS Rack Type", ["Standard Rack", "Outdoor Cabinet", "Custom Integration"])
     ems_networking = st.selectbox("Networking Requirements", ["Basic", "Redundant", "Isolated Secure VLAN"])
 elif proposal_type == "Full Product Proposal":
-    st.subheader("🏗️ Full Product Configuration")
+    st.markdown("### 🏗️ Full Product Configuration", unsafe_allow_html=True)
     enclosure_type = st.selectbox("Enclosure Type", ["ISO Container", "Walk-in Enclosure", "Custom Built"])
     hvac_option = st.selectbox("HVAC Type", ["Split System", "Packaged Unit", "Free Cooling", "None"])
     inverter_mounting = st.selectbox("Inverter Mounting", ["Skid Mounted", "Pad Mounted", "Integrated"])
 
 # === Project & System Info ===
+st.markdown("<hr>", unsafe_allow_html=True)
+st.markdown("### 📁 <b>Project Information</b>", unsafe_allow_html=True)
 col1, col2 = st.columns(2)
 with col1:
-    with st.expander("📁 Project Information", expanded=True):
-        proposal_id = st.text_input("Proposal ID")
-        customer_name = st.text_input("Customer Name")
-        project_name = st.text_input("Project Name")
-        country = st.selectbox("Country", ["USA", "Canada", "Germany", "UK", "Sweden", "Argentina"])
-        if country == "USA":
-            state = st.selectbox("State", ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut",
-                                           "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa",
-                                           "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan",
-                                           "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire",
-                                           "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio",
-                                           "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota",
-                                           "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia",
-                                           "Wisconsin", "Wyoming"])
-        else:
-            state = None
-        market = st.selectbox("Market", ["ERCOT", "CAISO", "PJM", "UK Grid", "European Grid"])
-        cod = st.date_input("Expected COD (Commercial Operation Date)")
+    proposal_id = st.text_input("Proposal ID")
+    customer_name = st.text_input("Customer Name")
+    project_name = st.text_input("Project Name")
+    country = st.selectbox("Country", ["USA", "Canada", "Germany", "UK", "Sweden", "Argentina"])
+    if country == "USA":
+        state = st.selectbox("State", ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut",
+                                       "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa",
+                                       "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan",
+                                       "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire",
+                                       "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio",
+                                       "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota",
+                                       "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia",
+                                       "Wisconsin", "Wyoming"])
+    else:
+        state = None
+    market = st.selectbox("Market", ["ERCOT", "CAISO", "PJM", "UK Grid", "European Grid"])
+    cod = st.date_input("Expected COD (Commercial Operation Date)")
+
 with col2:
-    with st.expander("🔋 System Configuration", expanded=True):
-        battery_brand = st.selectbox("Battery Brand", ["CATL", "BYD", "Samsung SDI", "Cornex", "Other"])
-        battery_size = st.number_input("Battery Size per Unit (MWh)", min_value=0.0, step=0.1)
-        battery_qty = st.number_input("Number of Battery Containers", min_value=0, step=1)
-        pcs_brand = st.selectbox("PCS Brand", ["EPC Power", "Sungrow", "Sineng", "Power Electronics", "Other"])
-        pcs_size = st.number_input("PCS Size per Unit (MW)", min_value=0.0, step=0.1)
-        pcs_qty = st.number_input("Number of PCS Blocks", min_value=0, step=1)
+    st.markdown("### 🔋 <b>System Configuration</b>", unsafe_allow_html=True)
+    battery_brand = st.selectbox("Battery Brand", ["CATL", "BYD", "Samsung SDI", "Cornex", "Other"])
+    battery_size = st.number_input("Battery Size per Unit (MWh)", min_value=0.0, step=0.1)
+    battery_qty = st.number_input("Number of Battery Containers", min_value=0, step=1)
+    pcs_brand = st.selectbox("PCS Brand", ["EPC Power", "Sungrow", "Sineng", "Power Electronics", "Other"])
+    pcs_size = st.number_input("PCS Size per Unit (MW)", min_value=0.0, step=0.1)
+    pcs_qty = st.number_input("Number of PCS Blocks", min_value=0, step=1)
+
 # === Divider ===
-    st.markdown("<hr>", unsafe_allow_html=True)
+st.markdown("<hr style='margin-top: 25px; margin-bottom: 10px;'>", unsafe_allow_html=True)
+
 # === BD Details, Uploads, Advanced Settings ===
-with st.expander("👥 Business Development Details", expanded=True):
+st.markdown("### 👥 <b>Business Development Details</b>", unsafe_allow_html=True)
+with st.expander("BD Details", expanded=True):
     bd_rep = st.selectbox("BD Representative", ["Bridget Nolan", "Tyler Davis", "Tara Jo Brooks", "Chris Ramirez", "Other"])
     client_logo = st.file_uploader("📤 Upload Client Logo (Optional)", type=["png", "jpg"])
     if client_logo:
@@ -187,12 +192,13 @@ with st.expander("👥 Business Development Details", expanded=True):
     client_file = st.file_uploader("📎 Attach Client Input or Specs (Optional)", type=["pdf", "docx", "xlsx"])
 
 # === Divider ===
-    st.markdown("<hr>", unsafe_allow_html=True)
+st.markdown("<hr style='margin-top: 25px; margin-bottom: 10px;'>", unsafe_allow_html=True)
 
 # === Scope + Currency ===
 col1, col2 = st.columns(2)
 with col1:
-    with st.expander("🛠️ Scope of Services", expanded=True):
+    st.markdown("### 🛠️ <b>Scope of Services</b>", unsafe_allow_html=True)
+    with st.expander("Scope Options", expanded=True):
         field_commissioning = st.checkbox("Field Commissioning Services")
         grid_testing = st.checkbox("Grid Qualification Testing")
         performance_guarantees = st.checkbox("Performance Guarantees")
@@ -202,10 +208,13 @@ with col1:
         oem_warranty = st.checkbox("OEM Warranty Extension")
         custom_scope = st.checkbox("Custom Scope Needed?")
         custom_scope_details = st.text_area("If custom, please describe the scope", disabled=not custom_scope)
+
 with col2:
-    with st.expander("💱 Currency & Region", expanded=True):
+    st.markdown("### 💱 <b>Currency & Region</b>", unsafe_allow_html=True)
+    with st.expander("Financial Options", expanded=True):
         currency = st.radio("Currency for Proposal", ["USD", "EUR", "GBP", "Custom"])
         custom_fx = st.number_input("Custom FX Rate (1 USD = ?)", min_value=0.0, step=0.01, disabled=(currency != "Custom"))
+
 
 from PIL import Image
 
