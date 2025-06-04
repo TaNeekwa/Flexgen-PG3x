@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import os
 import base64
-Import your login credentials
 from Login.Username.Password.LoginInfo import USER_CREDENTIALS
 try:
     import openpyxl
