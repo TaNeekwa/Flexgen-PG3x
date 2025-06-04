@@ -1,5 +1,4 @@
 import streamlit as st
-import openai  # ✅ Import OpenAI once at the top
 from PIL import Image
 # === Page Settings (MUST be first) ===
 st.set_page_config(page_title="Proposal Generator", layout="wide")
