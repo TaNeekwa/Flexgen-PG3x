@@ -95,8 +95,21 @@ else:
     section[data-testid="stSidebar"] * {
         color: white !important;
     }
-    div.stButton > button,
-    div.stButton > button span {
+    /* ✅ Light mode fix for button text */
+    div.stButton > button {
+        background-color: #111 !important;
+        color: white !important;
+        border-radius: 10px !important;
+        padding: 0.5rem 1.5rem !important;
+        font-weight: 600 !important;
+        border: 1px solid white !important;
+        text-align: center !important;
+    }
+    div.stButton > button * {
+        color: white !important;
+    }
+    div.stButton > button:hover {
+        background-color: #333 !important;
         color: white !important;
     }
     .stTextInput > div > div > input,
