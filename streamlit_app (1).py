@@ -109,7 +109,7 @@ with top_col1:
 
 with top_col2:
     st.markdown("""
-    <div style="text-align: center; padding-top: 0;">
+    <div style="text-align: center; padding-top: 2;">
         <img src="https://raw.githubusercontent.com/TaNeekwa/Flexgen-PG3x/main/FlexGen_Primary_Logo_-_Gradient.svg.png" 
              alt="FlexGen Logo" width="300" />
         <h1 style="font-size: 42px; margin-top: 5px;">
