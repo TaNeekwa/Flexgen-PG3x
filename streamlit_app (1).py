@@ -12,7 +12,7 @@ except ImportError:
 st.set_page_config(page_title="Proposal Generator", layout="wide")
 
 # === Toggle First So It's Usable in Styling ===
-dark_mode = st.toggle("🌞 Light / 🌙 Dark", key="theme_switch")
+dark_mode = st.toggle("🌞 Light / 🌙 Dark")
 
 # === Apply Conditional Styling After Toggle ===
 if dark_mode:
