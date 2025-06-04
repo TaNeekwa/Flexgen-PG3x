@@ -122,7 +122,12 @@ with col1:
     ])
 
 with col2:
-    
+    uploaded_form = st.file_uploader(
+        "📤 Upload Input Form (Excel)",
+        type=["xlsx"],
+        help="Drop the input form here to auto-fill fields."
+    )
+
     if uploaded_form:
         import pandas as pd
         try:
