@@ -37,13 +37,7 @@ if dark_mode:
         border: 1px solid white !important;
         border-radius: 4px !important;
     }
-    .css-1wa3eu0, .css-1okebmr, .css-1g6gooi, .css-14el2xx, .css-qc6sy-singleValue {
-        color: white !important;
-    }
     div[data-baseweb="select"] * {
-        color: white !important;
-    }
-    input, select, textarea {
         color: white !important;
     }
     .stSelectbox:hover, .stTextInput:hover, .stNumberInput:hover {
@@ -55,73 +49,49 @@ if dark_mode:
     </style>"""
 else:
     css_theme = """<style>
-body, .stApp {
-    background-color: #ffffff !important;
-    color: #1a1a1a !important;
-    font-family: 'Century Gothic', sans-serif !important;
-}
+    body, .stApp {
+        background-color: #ffffff !important;
+        color: #1a1a1a !important;
+        font-family: 'Century Gothic', sans-serif !important;
+    }
+    h1, h2, h3, h4, p, label, div, span {
+        color: #1a1a1a !important;
+    }
+    section[data-testid="stSidebar"] {
+        background-color: #1a1a1a !important;
+        color: white !important;
+    }
+    section[data-testid="stSidebar"] * {
+        color: white !important;
+    }
+    .stTextInput > div > div > input,
+    .stSelectbox > div,
+    .stNumberInput > div > input,
+    .stDateInput > div > input,
+    .stTextArea > div > textarea,
+    .stRadio > div > label,
+    .stCheckbox > div {
+        background-color: #ffffff !important;
+        color: white !important;
+        border: 1px solid #d9d9d9 !important;
+        border-radius: 6px !important;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.05) !important;
+    }
+    div[data-baseweb="select"] * {
+        color: white !important;
+    }
+    .stSelectbox:hover, .stTextInput:hover, .stNumberInput:hover {
+        background-color: #f7f7f7 !important;
+    }
+    .st-expander > summary {
+        color: #1a1a1a !important;
+    }
+    </style>"""
 
-/* Global heading and label text */
-h1, h2, h3, h4, p, label, div, span {
-    color: #1a1a1a !important;
-}
-
-/* Sidebar override */
-section[data-testid="stSidebar"] {
-    background-color: #1a1a1a !important;
-    color: white !important;
-}
-section[data-testid="stSidebar"] * {
-    color: white !important;
-}
-
-/* Logo */
-img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    padding-bottom: 10px;
-}
-
-/* Form Inputs */
-.stTextInput > div > div > input,
-.stSelectbox > div,
-.stNumberInput > div > input,
-.stDateInput > div > input,
-.stTextArea > div > textarea,
-.stRadio > div > label,
-.stCheckbox > div {
-    background-color: #ffffff !important;
-    color: white !important;  /* ✅ text inside inputs */
-    border: 1px solid #d9d9d9 !important;
-    border-radius: 6px !important;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.05) !important;
-}
-
-/* Dropdown & select items */
-.css-1wa3eu0, .css-1okebmr, .css-1g6gooi, .css-14el2xx, .css-qc6sy-singleValue {
-    color: white !important;  /* ✅ selected value text */
-}
-div[data-baseweb="select"] * {
-    color: white !important;  /* ✅ all options in dropdown */
-}
-input, select, textarea {
-    color: white !important;
-}
-
-/* Hover styling */
-.stSelectbox:hover, .stTextInput:hover, .stNumberInput:hover {
-    background-color: #f7f7f7 !important;
-}
-
-/* Expander text */
-.st-expander > summary {
-    color: #1a1a1a !important;
-}
-# Apply theme (dark/light)
+# ✅ Apply the theme styles
 st.markdown(css_theme, unsafe_allow_html=True)
 
-# Custom button styling block (separate)
+# ✅ Button styling block
 st.markdown("""
 <style>
 .button-row {
@@ -130,8 +100,6 @@ st.markdown("""
     justify-content: center;
     margin-top: 20px;
 }
-
-/* Fixes for button text */
 div.stButton > button {
     background-color: #111 !important;
     color: white !important;
@@ -141,14 +109,13 @@ div.stButton > button {
     border: none !important;
     text-align: center !important;
 }
-
-/* Improve contrast on hover */
 div.stButton > button:hover {
     background-color: #333 !important;
     color: white !important;
 }
 </style>
-""", unsafe_allow_html=True)  # ✅ Don't forget this!
+""", unsafe_allow_html=True)
+
 
     # ✅ INSERT THIS IMMEDIATELY HERE, BEFORE ANY UI:
 st.markdown(css_theme, unsafe_allow_html=True)
