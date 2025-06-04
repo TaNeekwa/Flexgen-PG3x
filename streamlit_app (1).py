@@ -1,7 +1,3 @@
-[media pointer="file-service://file-XFsnjBmFqbMwfavPC2yUkv"]
-[media pointer="file-service://file-WS7KUFPrw9T6LCUYgWbsSA"]
-so i just went back to this one because i can see it now. now i just need to make sure that the text color within the drop downs are white
-
 import streamlit as st
 
 # === Page Settings (MUST be first) ===
