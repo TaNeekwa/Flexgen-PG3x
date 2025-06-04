@@ -35,7 +35,7 @@ st.markdown("""
     .stRadio > div > label,
     .stCheckbox > div {
         background-color: white !important;
-        color: black !important;
+        color: light grey !important;
         border: 1px solid black !important;
         border-radius: 4px !important;
     }
