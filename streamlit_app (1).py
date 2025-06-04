@@ -1,7 +1,14 @@
 import streamlit as st
+import openai 
+import openai
 from PIL import Image
 import os
 import pandas as pd
+
+try:
+    import openpyxl  # noqa: F401 - used implicitly by pandas
+except ImportError:  # pragma: no cover - just show a friendly error
+    openpyxl = None
 
 # === Page Settings (MUST be first) ===
 st.set_page_config(page_title="Proposal Generator", layout="wide")
