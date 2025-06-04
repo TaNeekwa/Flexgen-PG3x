@@ -124,7 +124,7 @@ with col1:
 with col2:
     uploaded_form = st.file_uploader(
         "📤 Upload Input Form (Excel)",
-        type=["xlsx"],
+        type=["xlsx", "xlsm", "xls"],
         help="Drop the input form here to auto-fill fields."
     )
 

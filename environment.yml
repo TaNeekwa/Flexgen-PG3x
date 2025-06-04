@@ -6,3 +6,5 @@ dependencies:
     - streamlit
     - openai
     - pillow
+    - pandas
+    - openpyxl
