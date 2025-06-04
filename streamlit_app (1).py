@@ -329,29 +329,7 @@ with st.sidebar:
         """,
         unsafe_allow_html=True
     )
-    # === FlexBot AI Assistant ===
-with st.expander("🤖 Need Help? Ask FlexBot", expanded=False):
-    st.markdown("Type your question below — FlexBot can help you calculate block counts, clarify PCS/Battery specs, or answer proposal questions.")
-    user_question = st.text_area("Ask FlexBot anything...")
-
-    if user_question:
-        with st.spinner("FlexBot is thinking..."):
-            openai.api_key = st.secrets["OPENAI_API_KEY"]
-            try:
-                response = openai.ChatCompletion.create(
-                    model="gpt-4",
-                    messages=[
-                        {"role": "system", "content": (
-                            "You are FlexBot, the AI assistant for FlexGen's proposal generator. "
-                            "You answer questions about PCS, battery specs, block count formulas, client proposal logic, and configuration guidance. "
-                            "Respond in a helpful, knowledgeable, and professional tone."
-                        )},
-                        {"role": "user", "content": user_question}
-                    ]
-                )
-                st.success(response.choices[0].message.content.strip())
-            except Exception as e:
-                st.error(f"⚠️ FlexBot ran into an error: {e}")
+ 
 # === Submission Buttons ===
 col1, col2 = st.columns([1, 1])
 with col1:
