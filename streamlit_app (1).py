@@ -88,33 +88,7 @@ else:
     }
     </style>"""
 
-# ✅ Apply the theme styles
-st.markdown(css_theme, unsafe_allow_html=True)
 
-# ✅ Button styling block
-st.markdown("""
-<style>
-.button-row {
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-    margin-top: 20px;
-}
-div.stButton > button {
-    background-color: #111 !important;
-    color: white !important;
-    border-radius: 10px !important;
-    padding: 0.5rem 1.5rem !important;
-    font-weight: 600 !important;
-    border: none !important;
-    text-align: center !important;
-}
-div.stButton > button:hover {
-    background-color: #333 !important;
-    color: white !important;
-}
-</style>
-""", unsafe_allow_html=True)
 
     # ✅ INSERT THIS IMMEDIATELY HERE, BEFORE ANY UI:
 st.markdown(css_theme, unsafe_allow_html=True)
