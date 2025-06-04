@@ -1,5 +1,4 @@
 import streamlit as st
-import openai 
 from PIL import Image
 import os
 import pandas as pd
