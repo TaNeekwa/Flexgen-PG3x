@@ -21,7 +21,7 @@ if not st.session_state.authenticated:
         <div style='display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 40px;'>
             <img src='https://raw.githubusercontent.com/TaNeekwa/Flexgen-PG3x/main/FlexGen_Primary_Logo_-_Gradient.svg.png' width='250' style='margin-bottom: 20px;' />
             <div style='background-color: #111; padding: 5px; border-radius: 12px; width: 100%; max-width: 200px; box-shadow: 0 4px 20px rgba(0,0,0,0.4);'>
-                <h1 style='color: white; text-align: center; margin-bottom: 20px;'>🔐 Login</h1>
+                <h1 style='color: white; text-align: center; margin-bottom: 10px;'>🔐 Login</h1>
     """, unsafe_allow_html=True)
 
     username = st.text_input("Username", key="login_user_input")
