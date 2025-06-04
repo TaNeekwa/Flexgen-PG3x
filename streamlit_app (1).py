@@ -31,7 +31,8 @@ with st.sidebar:
 dark_mode = st.session_state.dark_mode
 
 # === Divider ===
-st.markdown("<hr style='border: 1px solid white; margin-top: 20px; margin-bottom: 20px;'>", unsafe_allow_html=True)
+divider_color = "#fff" if dark_mode else "#000"
+st.markdown(f"<hr style='border: 1px solid {divider_color}; margin-top: 20px; margin-bottom: 20px;'>", unsafe_allow_html=True)
 
 # === Apply Conditional Styling After Toggle ===
 
@@ -42,13 +43,10 @@ if dark_mode:
         color: white !important;
         font-family: 'Century Gothic', sans-serif !important;
     }
-    }
     h1, h2, h3, h4, p, label {
         color: white !important;
     }
-    div.stButton > button {
-        color: white !important;
-    }
+    div.stButton > button,
     div.stButton > button span {
         color: white !important;
     }
@@ -97,11 +95,9 @@ else:
     section[data-testid="stSidebar"] * {
         color: white !important;
     }
-    div.stButton > button {
-        color: white !important;  /* Ensures white text */
-    }
+    div.stButton > button,
     div.stButton > button span {
-        color: white !important;  /* Fix span inside button */
+        color: white !important;
     }
     .stTextInput > div > div > input,
     .stSelectbox > div,
