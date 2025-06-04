@@ -1,6 +1,4 @@
 import streamlit as st
-import openai 
-import openai
 from PIL import Image
 import os
 import pandas as pd
@@ -135,13 +133,18 @@ with col2:
     )
 
     if uploaded_form:
-        import pandas as pd
-        try:
-            df_preview = pd.read_excel(uploaded_form, nrows=10)  # Only show top 10 rows
-            with st.expander("📄 Preview Uploaded Input Form", expanded=False):
-                st.dataframe(df_preview, use_container_width=True)
-        except Exception as e:
-            st.error(f"Could not preview file: {e}")
+          if openpyxl is None:
+            st.error(
+                "Could not preview file: openpyxl is not installed. "
+                "Install it with `pip install openpyxl`."
+            )
+        else:
+            try:
+                df_preview = pd.read_excel(uploaded_form, engine="openpyxl", nrows=10)
+                with st.expander("📄 Preview Uploaded Input Form", expanded=False):
+                    st.dataframe(df_preview, use_container_width=True)
+            except Exception as e:
+                st.error(f"Could not preview file: {e}")
   
 # === Conditional Inputs ===
 if proposal_type == "EMS Proposal":
