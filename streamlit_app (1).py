@@ -149,8 +149,8 @@ with col2:
     )
 
     if uploaded_form:
-    st.markdown("### 🖼️ Visual Input Form Preview (Original Format)")
-    show_excel_as_downloadable_preview(uploaded_form)
+        st.markdown("### 🖼️ Visual Input Form Preview (Original Format)")
+        show_excel_as_downloadable_preview(uploaded_form)
   
 # === Conditional Inputs ===
 if proposal_type == "EMS Proposal":
