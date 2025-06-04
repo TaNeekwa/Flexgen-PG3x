@@ -1,41 +1,48 @@
 import streamlit as st
 
-# Page settings — MUST be first!
-st.set_page_config(page_title="Proposal Generator", layout="wide")
+st.markdown("""
+<style>
+/* Ensure full white background */
+html, body, [data-testid="stAppViewContainer"], [data-testid="stApp"], .block-container {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    font-family: 'Century Gothic', sans-serif !important;
+}
 
-# === Global Style Overrides ===
-st.markdown(
-    """
-    <style>
-    body {
-        background-color: white !important;
-        color: black !important;
-        font-family: 'Century Gothic', sans-serif !important;
-    }
-    .reportview-container .markdown-text-container, .sidebar .sidebar-content {
-        color: black !important;
-        font-family: 'Century Gothic', sans-serif !important;
-    }
-    h1, h2, h3, h4, p, label, input, select, textarea {
-        font-family: 'Century Gothic', sans-serif !important;
-        color: #000000 !important;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+/* Input fields and select boxes */
+input, textarea, select {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border: 1px solid #000000 !important;
+    border-radius: 6px !important;
+    padding: 8px !important;
+    box-shadow: none !important;
+}
 
-# === Logo + Title Section (Single clean block) ===
-st.markdown(
-    """
-    <div style="text-align: center;">
-        <img src="https://raw.githubusercontent.com/TaNeekwa/Flexgen-PG3x/main/FlexGen_Primary_Logo_-_Gradient.svg.png" width="200"/>
-        <h1 style="font-size: 40px; margin-top: 10px;">Proposal Generator - FlexGen Edition ⚡</h1>
-        <p style="font-size: 18px;">Enter project details below to generate your custom proposal.</p>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+/* On focus, slight gray background */
+input:focus, textarea:focus, select:focus {
+    background-color: #f5f5f5 !important;
+    outline: none !important;
+}
+
+/* Dropdown containers (Streamlit-specific override) */
+div[data-baseweb="select"] > div {
+    background-color: #ffffff !important;
+    border: 1px solid #000000 !important;
+    color: #000000 !important;
+}
+
+div[data-baseweb="select"]:focus-within {
+    background-color: #f5f5f5 !important;
+}
+
+/* Headings and text */
+h1, h2, h3, h4, p, label {
+    color: #000000 !important;
+    font-family: 'Century Gothic', sans-serif !important;
+}
+</style>
+""", unsafe_allow_html=True)
 # Proposal Type
 proposal_type = st.selectbox("🧩 Proposal Type", ["EMS Proposal", "Full Product Proposal"])
 st.markdown(f"You selected: **{proposal_type}**")
