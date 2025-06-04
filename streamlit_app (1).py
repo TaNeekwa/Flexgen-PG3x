@@ -128,7 +128,7 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 # ✅ Add spacing between title and form section
-st.markdown("<div style='margin-top: 50px;'></div>", unsafe_allow_html=True)
+st.markdown("<hr style='border: 3px black; margin-top: 20px; margin-bottom: 20px;'>", unsafe_allow_html=True)
 # ✅ Add divider here
 st.markdown("<hr style='margin-top: -10px; margin-bottom: 20px;'>", unsafe_allow_html=True)
 
