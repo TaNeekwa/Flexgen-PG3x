@@ -27,7 +27,7 @@ if not st.session_state.authenticated:
         with col2:
             st.markdown("""
                 <div style='background-color: #FFFFFF; padding: 7px 11px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.4);'>
-                    <h3 style='color: white; text-align: center; margin-bottom: 20px;'>🔐 Login</h3>
+                    <h3 style='color: black; text-align: center; margin-bottom: 20px;'>🔐 Login</h3>
             """, unsafe_allow_html=True)
 
             username = st.text_input("Username", placeholder="Enter username", label_visibility="collapsed", key="login_user_input")
