@@ -24,6 +24,9 @@ with st.sidebar:
         st.session_state.dark_mode = toggle_val
         st.experimental_rerun()
 
+    # ✅ Divider inside the sidebar
+    st.markdown("<hr style='border: 1px solid white; margin-top: 20px; margin-bottom: 20px;'>", unsafe_allow_html=True)
+
 # === Apply theme after rerun ===
 dark_mode = st.session_state.dark_mode
 
