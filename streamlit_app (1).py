@@ -16,6 +16,8 @@ with st.sidebar:
     # === 🌞🌙 Light / Dark Mode Toggle ===
     st.markdown("### 🌓 Light / Dark Mode")
     dark_mode = st.toggle("🌞 Light / 🌙 Dark", key="theme_toggle")
+ # === Divider ===
+    st.markdown("<hr>", unsafe_allow_html=True)
 
 # === Apply Conditional Styling After Toggle ===
 if dark_mode:
