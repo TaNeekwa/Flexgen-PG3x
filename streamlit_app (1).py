@@ -205,7 +205,7 @@ with col1:
 
     st.markdown("### <strong>👥 Business Development</strong>", unsafe_allow_html=True)
     bd_rep = st.selectbox("BD Representative", [
-        "Bridget Nolan", "Tyler Davis", "Tara Jo Brooks", "Chris Ramirez", "Other"
+        "Jason Abiecunas", "Kody Calkins", "Don Harris", "JC, Reymond", "Other"
     ])
 
 with col2:
