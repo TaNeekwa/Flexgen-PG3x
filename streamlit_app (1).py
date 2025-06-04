@@ -3,6 +3,7 @@ from PIL import Image
 import os
 import pandas as pd
 try:
+    
     import openpyxl  # noqa: F401 - used implicitly by pandas
 except ImportError:  # pragma: no cover - just show a friendly error
     openpyxl = None
@@ -128,7 +129,7 @@ with col2:
     uploaded_form = st.file_uploader(
         "📤 Upload Input Form (Excel)",
         type=["xlsx", "xlsm", "xls"],
-        help="Drop the input form here to auto-fill fields."
+        help="Drop the input form here to auto-fill fields.",
     )
     if uploaded_form:
           if openpyxl is None:
@@ -140,6 +141,21 @@ with col2:
             try:
                 df_preview = pd.read_excel(uploaded_form, engine="openpyxl", nrows=10)
                 with st.expander("📄 Preview Uploaded Input Form", expanded=False):
+                    st.dataframe(df_preview, use_container_width=True)
+            except Exception as e:
+                st.error(f"Could not preview file: {e}") if openpyxl is None:
+            st.error(
+                "Could not preview file: openpyxl is not installed. "
+                "Install it with `pip install openpyxl`."
+            )
+        else:
+            try:
+                df_preview = pd.read_excel(
+                    uploaded_form, engine="openpyxl", nrows=10
+                )
+                with st.expander(
+                    "📄 Preview Uploaded Input Form", expanded=False
+                ):
                     st.dataframe(df_preview, use_container_width=True)
             except Exception as e:
                 st.error(f"Could not preview file: {e}")
