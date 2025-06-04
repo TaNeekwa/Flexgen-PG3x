@@ -1,23 +1,34 @@
+import streamlit as st
 import pandas as pd
 import os
-import streamlit as st
 import base64
 
 try:
-    import openpyxl  # noqa: F401 - used implicitly by pandas
+    import openpyxl
 except ImportError:
     openpyxl = None
 
-# === Page Settings (MUST be first) ===
+# === Page Settings ===
 st.set_page_config(page_title="Proposal Generator", layout="wide")
 
- # === Sidebar Layout: Theme Toggle + Summary + Footer ===
+# === Setup session state for theme toggle ===
+if "dark_mode" not in st.session_state:
+    st.session_state.dark_mode = False
+
+# === Sidebar Layout: Theme Toggle + Summary ===
 with st.sidebar:
-    # === 🌞🌙 Light / Dark Mode Toggle ===
     st.markdown("### 🌓 Light / Dark Mode")
-    dark_mode = st.toggle("🌞 Light / 🌙 Dark", key="theme_toggle")
- # === Divider ===
-    st.markdown("<hr>", unsafe_allow_html=True)
+
+    # Flip and rerun if toggled
+    new_toggle = st.toggle("🌞 Light / 🌙 Dark", value=st.session_state.dark_mode, key="theme_toggle")
+
+    if new_toggle != st.session_state.dark_mode:
+        st.session_state.dark_mode = new_toggle
+        st.experimental_rerun()  # 🔄 Force reload with new theme
+
+# === Apply theme after rerun ===
+dark_mode = st.session_state.dark_mode
+
 
 # === Apply Conditional Styling After Toggle ===
 if dark_mode:
