@@ -25,14 +25,19 @@ if not st.session_state.authenticated:
         # Card layout using columns to center
         col1, col2, col3 = st.columns([1, 2, 1])
         with col2:
+            # Login box
             st.markdown("""
-    <div style='display: flex; justify-content: center;'>
-        <div style='background-color: #111; padding: 10px 16px 14px 16px; border-radius: 10px; width: 100%; max-width: 320px; box-shadow: 0 4px 14px rgba(0,0,0,0.25);'>
-            <h3 style='color: white; text-align: center; margin: 8px 0 20px;'>🔐 Login</h3>
-        </div>
-    </div>
-""", unsafe_allow_html=True)
+                <div style='display: flex; justify-content: center;'>
+                    <div style='background-color: #111; padding: 10px 16px 14px 16px; border-radius: 10px; width: 100%; max-width: 320px; box-shadow: 0 4px 14px rgba(0,0,0,0.25);'>
+                        <h3 style='color: white; text-align: center; margin: 8px 0 10px;'>🔐 Login</h3>
+                    </div>
+                </div>
+            """, unsafe_allow_html=True)
 
+            # 👉 Spacer to push the inputs down slightly from the login box
+            st.markdown("<div style='height: 18px;'></div>", unsafe_allow_html=True)
+
+            # Inputs
             username = st.text_input("Username", placeholder="Enter username", label_visibility="collapsed", key="login_user_input")
             password = st.text_input("Password", type="password", placeholder="Enter password", label_visibility="collapsed", key="login_pass_input")
 
@@ -45,6 +50,7 @@ if not st.session_state.authenticated:
                 else:
                     st.error("Invalid username or password.")
 
+            # Optional close tag (not really needed in Streamlit HTML blocks, but fine to leave)
             st.markdown("</div>", unsafe_allow_html=True)
 
     st.stop()
