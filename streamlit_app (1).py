@@ -20,19 +20,19 @@ if not st.session_state.authenticated:
         </div>
     """, unsafe_allow_html=True)
 
-    # Login card wrapper
-    with st.container():
-        # Card layout using columns to center
-        col1, col2, col3 = st.columns([1, 2, 1])
-        with col2:
-            # Login box
-            st.markdown("""
-                <div style='display: flex; justify-content: center;'>
-                    <div style='background-color: #111; padding: 10px 16px 14px 16px; border-radius: 10px; width: 100%; max-width: 320px; box-shadow: 0 4px 14px rgba(0,0,0,0.25);'>
-                        <h3 style='color: white; text-align: center; margin: 8px 0 10px;'>🔐 Login</h3>
-                    </div>
+   # Login card wrapper
+with st.container():
+    # Card layout using columns to center
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Login box (reduced height)
+        st.markdown("""
+            <div style='display: flex; justify-content: center;'>
+                <div style='background-color: #111; padding: 6px 12px; border-radius: 10px; width: 100%; max-width: 320px; box-shadow: 0 3px 10px rgba(0,0,0,0.25);'>
+                    <h4 style='color: white; text-align: center; margin: 4px 0;'>🔐 Login</h4>
                 </div>
-            """, unsafe_allow_html=True)
+            </div>
+        """, unsafe_allow_html=True)
 
             # 👉 Spacer to push the inputs down slightly from the login box
             st.markdown("<div style='height: 25px;'></div>", unsafe_allow_html=True)
