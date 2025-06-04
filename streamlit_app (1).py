@@ -88,8 +88,9 @@ else:
     }
     </style>"""
 
-    # ✅ INSERT THIS IMMEDIATELY HERE, BEFORE ANY UI:
+  # ✅ Apply styles
 st.markdown(css_theme, unsafe_allow_html=True)
+
 # === Logo + Title Section ===
 st.markdown("""
 <div style="text-align: center; padding-top: 10px;">
@@ -98,7 +99,7 @@ st.markdown("""
     <h1 style="font-size: 42px; margin-top: 20px;">
         Proposal Generator - FlexGen Edition 
     </h1>
-    <p style="font-size: 18px;">Enter project details below to generate your custom proposal.</p>
+    <p style="font-size: 18px; margin-bottom: 30px;">Enter project details below to generate your custom proposal.</p>
 </div>
 """, unsafe_allow_html=True)
 
@@ -110,7 +111,9 @@ with col1:
     st.markdown(f"You selected: **{proposal_type}**")
 
 with col2:
+    st.markdown("<div style='margin-left: 20px;'>", unsafe_allow_html=True)
     uploaded_form = st.file_uploader("📤 Upload Input Form (Excel)", type=["xlsx"], help="Drop the input form here to auto-fill fields.")
+    st.markdown("</div>", unsafe_allow_html=True)
 
 # === Conditional Inputs ===
 if proposal_type == "EMS Proposal":
