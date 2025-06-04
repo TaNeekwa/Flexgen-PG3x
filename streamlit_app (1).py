@@ -1,22 +1,40 @@
 import pandas as pd
 import os
 import streamlit as st
-import base64  # ✅ Moved here to fix error
+import base64
 
 try:
     import openpyxl  # noqa: F401 - used implicitly by pandas
 except ImportError:
     openpyxl = None
-def get_excel_download_link(uploaded_file):
-    # Reset the file pointer before reading
-    uploaded_file.seek(0)
-    b64 = base64.b64encode(uploaded_file.read()).decode()
-    return f'<a href="data:application/octet-stream;base64,{b64}" download="InputForm.xlsx">📥 Download and view in Excel</a>'
 
 # === Page Settings (MUST be first) ===
 st.set_page_config(page_title="Proposal Generator", layout="wide")
 
-# === Conditional Styling ===
+# === Theme Toggle + Logo Layout ===
+top_col1, top_col2 = st.columns([1, 9])  # Left = toggle, Right = logo
+
+with top_col1:
+    st.markdown("""
+    <div style="padding-top: 5px; text-align: left;">
+        <span style="font-weight: bold;">Switch Theme Mode</span><br>
+    </div>
+    """, unsafe_allow_html=True)
+    dark_mode = st.toggle("🌞 Light / 🌙 Dark")
+
+with top_col2:
+    st.markdown("""
+    <div style="text-align: center; padding-top: 0;">
+        <img src="https://raw.githubusercontent.com/TaNeekwa/Flexgen-PG3x/main/FlexGen_Primary_Logo_-_Gradient.svg.png" 
+             alt="FlexGen Logo" width="300" />
+        <h1 style="font-size: 42px; margin-top: 5px;">
+            Proposal Generator - FlexGen Edition 
+        </h1>
+        <p style="font-size: 18px; margin-bottom: 10px;">Enter project details below to generate your custom proposal.</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+# === Conditional Styling (after dark_mode toggle is defined) ===
 if dark_mode:
     css_theme = """<style>
     body, .stApp {
