@@ -171,14 +171,7 @@ with col2:
 # === Divider ===
 st.markdown("<hr style='margin-top: 25px; margin-bottom: 10px;'>", unsafe_allow_html=True)
 
-# === BD Details, Uploads, Advanced Settings ===
-st.markdown("### 👥 <b>Business Development Details</b>", unsafe_allow_html=True)
-with st.expander("BD Details", expanded=True):
-    bd_rep = st.selectbox("BD Representative", ["Bridget Nolan", "Tyler Davis", "Tara Jo Brooks", "Chris Ramirez", "Other"])
-    client_logo = st.file_uploader("📤 Upload Client Logo (Optional)", type=["png", "jpg"])
-    if client_logo:
-        st.image(client_logo, caption="Client Logo", width=150)
-    client_file = st.file_uploader("📎 Attach Client Input or Specs (Optional)", type=["pdf", "docx", "xlsx"])
+
 
 # === Divider ===
 st.markdown("<hr style='margin-top: 25px; margin-bottom: 10px;'>", unsafe_allow_html=True)
