@@ -80,15 +80,21 @@ else:
         color: #1a1a1a !important;
         font-family: 'Century Gothic', sans-serif !important;
     }
-    h1, h2, h3, h4, p, label, div, span {
-        color: #1a1a1a !important;
-    }
-    section[data-testid="stSidebar"] {
-        background-color: #1a1a1a !important;
-        color: white !important;
-    }
-    section[data-testid="stSidebar"] * {
-        color: white !important;
+    h1, h2, h3, h4, p, label {
+    color: #1a1a1a !important;
+}
+section[data-testid="stSidebar"] {
+    background-color: #1a1a1a !important;
+    color: white !important;
+}
+section[data-testid="stSidebar"] * {
+    color: white !important;
+}
+div.stButton > button {
+    color: white !important;
+}
+div.stButton > button span {
+    color: white !important;
     }
     .stTextInput > div > div > input,
     .stSelectbox > div,
