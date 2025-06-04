@@ -1,75 +1,72 @@
 import streamlit as st
 
-st.markdown(
-    """
-    <style>
-    /* FULL OVERRIDE: Replace base theme for all inputs, dropdowns, etc. */
+st.markdown("""
+<style>
+html, body, .stApp {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    font-family: 'Century Gothic', sans-serif !important;
+}
 
-    /* General app background and font */
-    html, body, .stApp {
-        background-color: #ffffff !important;
-        color: #000000 !important;
-        font-family: 'Century Gothic', sans-serif !important;
-    }
+/* Selectbox (dropdown) styling */
+div[data-baseweb="select"] {
+    background-color: white !important;
+    border: 1px solid #000 !important;
+    border-radius: 6px !important;
+    padding: 5px 10px !important;
+}
 
-    /* Selectbox + dropdown style override */
-    div[data-baseweb="select"] {
-        background-color: white !important;
-        border: 1px solid #000000 !important;
-        border-radius: 6px !important;
-        color: white !important;
-        padding: 5px 10px !important;
-    }
+div[data-baseweb="popover"] {
+    background-color: white !important;
+    color: black !important;
+    border: 1px solid #000000 !important;
+    border-radius: 0 0 6px 6px !important;
+}
 
-    /* Dropdown when open */
-    div[data-baseweb="popover"] {
-        background-color: white !important;
-        color: black !important;
-        border: 1px solid #000000 !important;
-        border-radius: 0px 0px 6px 6px !important;
-    }
+div[data-baseweb="select"] div,
+div[data-baseweb="option"] {
+    color: black !important;
+    font-family: 'Century Gothic', sans-serif' !important;
+}
 
-    /* Text in select and dropdown */
-    div[data-baseweb="select"] div,
-    div[data-baseweb="option"] {
-        color: white !important;
-        font-family: 'Century Gothic', sans-serif !important;
-    }
+/* Inputs */
+input, textarea {
+    background-color: white !important;
+    color: black !important;
+    border: 1px solid black !important;
+    border-radius: 5px !important;
+    padding: 6px 10px;
+}
 
-    /* Input fields */
-    input, textarea {
-        background-color: white !important;
-        color: black !important;
-        border: 1px solid black !important;
-        border-radius: 5px !important;
-        padding: 6px 10px;
-    }
+/* Labels */
+label, .stRadio label {
+    color: black !important;
+    font-family: 'Century Gothic', sans-serif !important;
+}
 
-    /* Expander headers */
-    summary {
-        font-family: 'Century Gothic', sans-serif !important;
-        color: black !important;
-        font-weight: 600 !important;
-    }
+/* Checkbox fix */
+div[role="checkbox"] > label {
+    color: black !important;
+    opacity: 1 !important;
+}
 
-    /* Label text */
-    label, .stRadio label {
-        color: black !important;
-        font-family: 'Century Gothic', sans-serif !important;
-    }
+/* Expander headers */
+summary {
+    font-family: 'Century Gothic', sans-serif !important;
+    color: black !important;
+    font-weight: 600 !important;
+}
 
-    /* Button style */
-    button[kind="primary"] {
-        background-color: black !important;
-        color: white !important;
-        border-radius: 5px;
-        font-family: 'Century Gothic', sans-serif !important;
-    }
+/* Buttons */
+button[kind="primary"] {
+    background-color: black !important;
+    color: white !important;
+    border-radius: 5px;
+    font-family: 'Century Gothic', sans-serif !important;
+}
+</style>
+""", unsafe_allow_html=True)
 
-    </style>
-    """,
-    unsafe_allow_html=True
-)
 # === Logo + Title Section ===
 st.markdown("""
 <div style="text-align: center; padding-top: 10px;">
