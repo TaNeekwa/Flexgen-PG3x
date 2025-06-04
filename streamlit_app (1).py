@@ -45,7 +45,15 @@ label, .stRadio label {
 }
 
 /* Checkbox fix */
-div[role="checkbox"] > label {
+div[role="checkbox"] {
+    background-color: white !important;
+    border: 1px solid #000 !important;
+    border-radius: 4px !important;
+    color: black !important;
+    opacity: 1 !important;
+}
+
+div[role="checkbox"] * {
     color: black !important;
     opacity: 1 !important;
 }
@@ -66,7 +74,6 @@ button[kind="primary"] {
 }
 </style>
 """, unsafe_allow_html=True)
-
 # === Logo + Title Section ===
 st.markdown("""
 <div style="text-align: center; padding-top: 10px;">
