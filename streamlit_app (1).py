@@ -137,7 +137,7 @@ with col2:
         help="Drop the input form here to auto-fill fields.",
     )
 
-   if uploaded_form:
+    if uploaded_form:
         uploaded_form.seek(0)  # Reset pointer before reading
         try:
             excel_data = pd.ExcelFile(uploaded_form)
