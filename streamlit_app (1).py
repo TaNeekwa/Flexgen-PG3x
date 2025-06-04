@@ -116,7 +116,8 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-
+# ✅ Add divider here
+st.markdown("<hr style='margin-top: -10px; margin-bottom: 20px;'>", unsafe_allow_html=True)
 # ✅ Apply styles
 st.markdown(css_theme, unsafe_allow_html=True)
 
