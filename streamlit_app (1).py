@@ -3,67 +3,65 @@ import streamlit as st
 # === Page Settings (MUST be first) ===
 st.set_page_config(page_title="Proposal Generator", layout="wide")
 
-# === Global Style Overrides ===
-st.markdown("""
-<style>
-/* === Global App Layout === */
-html, body, .stApp {
-    background-color: white !important;
-    color: black !important;
-    font-family: 'Century Gothic', sans-serif !important;
-}
+st.markdown(
+    """
+    <style>
+    /* Global font and background */
+    body {
+        background-color: white !important;
+        font-family: 'Century Gothic', sans-serif !important;
+    }
+    .stApp {
+        background-color: white !important;
+        font-family: 'Century Gothic', sans-serif !important;
+    }
 
-/* === Global Text Styling === */
-h1, h2, h3, h4, label, p, span, div {
-    font-family: 'Century Gothic', sans-serif !important;
-    color: black !important;
-}
+    /* Widget base styling */
+    div[data-baseweb="select"] {
+        background-color: white !important;
+        border: 1px solid black !important;
+        border-radius: 6px !important;
+        color: black !important;
+    }
 
-/* === Streamlit Dropdown + Input Fix === */
-div[data-baseweb="select"] {
-    background-color: white !important;
-    border: 1px solid black !important;
-    border-radius: 6px !important;
-    padding: 4px !important;
-    box-shadow: none !important;
-}
+    div[data-baseweb="select"]:hover {
+        background-color: #f5f5f5 !important;
+    }
 
-div[data-baseweb="select"]:hover {
-    background-color: #f5f5f5 !important;
-}
+    /* Selected value text */
+    div[data-baseweb="select"] > div {
+        color: black !important;
+    }
 
-div[data-baseweb="select"]:focus-within {
-    border: 1px solid #555 !important;
-}
+    /* Hide weird pill/scrollbar overlay */
+    div[data-baseweb="select"] [data-baseweb="tag"] {
+        display: none !important;
+    }
 
-/* === Text + Number Input Cleanup === */
-input, textarea {
-    background-color: white !important;
-    color: black !important;
-    border: 1px solid black !important;
-    border-radius: 6px !important;
-    padding: 6px !important;
-}
+    /* Input boxes */
+    input, textarea {
+        background-color: white !important;
+        color: black !important;
+        border: 1px solid black !important;
+        border-radius: 6px !important;
+    }
 
-input:focus, textarea:focus {
-    background-color: #f5f5f5 !important;
-    outline: none !important;
-    border: 1px solid #333 !important;
-}
+    /* Radio buttons + text */
+    label, .stRadio {
+        color: black !important;
+        font-family: 'Century Gothic', sans-serif !important;
+    }
 
-/* === Fix caret spacing */
-.stSelectbox [data-testid="stSelectbox"] > div {
-    padding-right: 16px !important;
-}
-
-/* === Logo image formatting === */
-img {
-    display: block;
-    margin: 0 auto;
-    padding-bottom: 10px;
-}
-</style>
-""", unsafe_allow_html=True)
+    /* Expander title text */
+    .st-expander > summary {
+        font-family: 'Century Gothic', sans-serif !important;
+        font-weight: 600 !important;
+        color: black !important;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 # === Logo + Title Section ===
 st.markdown("""
