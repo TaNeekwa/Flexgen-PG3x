@@ -1,79 +1,57 @@
 import streamlit as st
 
+# === Page Settings (MUST be first) ===
+st.set_page_config(page_title="Proposal Generator", layout="wide")
+
+# === Global Style Overrides ===
 st.markdown("""
-<style>
-html, body, .stApp {
-    background-color: #ffffff !important;
-    color: #000000 !important;
-    font-family: 'Century Gothic', sans-serif !important;
-}
+    <style>
+    /* Full white background */
+    body, .stApp {
+        background-color: white !important;
+        font-family: 'Century Gothic', sans-serif !important;
+        color: black !important;
+    }
 
-/* Selectbox (dropdown) styling */
-div[data-baseweb="select"] {
-    background-color: white !important;
-    border: 1px solid #000 !important;
-    border-radius: 6px !important;
-    padding: 5px 10px !important;
-}
+    h1, h2, h3, h4, p, label, div, span {
+        font-family: 'Century Gothic', sans-serif !important;
+        color: black !important;
+    }
 
-div[data-baseweb="popover"] {
-    background-color: white !important;
-    color: black !important;
-    border: 1px solid #000000 !important;
-    border-radius: 0 0 6px 6px !important;
-}
+    /* Center logo */
+    img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        padding-bottom: 10px;
+    }
 
-div[data-baseweb="select"] div,
-div[data-baseweb="option"] {
-    color: black !important;
-    font-family: 'Century Gothic', sans-serif' !important;
-}
+    /* Inputs and dropdowns */
+    .stTextInput > div > div > input,
+    .stSelectbox > div,
+    .stNumberInput > div > input,
+    .stDateInput > div > input,
+    .stTextArea > div > textarea,
+    .stRadio > div > label,
+    .stCheckbox > div {
+        background-color: white !important;
+        color: grey !important;
+        border: 1px solid black !important;
+        border-radius: 4px !important;
+    }
 
-/* Inputs */
-input, textarea {
-    background-color: white !important;
-    color: black !important;
-    border: 1px solid black !important;
-    border-radius: 5px !important;
-    padding: 6px 10px;
-}
+    /* Hover / active state for dropdowns */
+    .stSelectbox:hover, .stTextInput:hover, .stNumberInput:hover {
+        background-color: #f2f2f2 !important;
+    }
 
-/* Labels */
-label, .stRadio label {
-    color: black !important;
-    font-family: 'Century Gothic', sans-serif !important;
-}
-
-/* Checkbox fix */
-div[role="checkbox"] {
-    background-color: white !important;
-    border: 1px solid #000 !important;
-    border-radius: 4px !important;
-    color: black !important;
-    opacity: 1 !important;
-}
-
-div[role="checkbox"] * {
-    color: black !important;
-    opacity: 1 !important;
-}
-
-/* Expander headers */
-summary {
-    font-family: 'Century Gothic', sans-serif !important;
-    color: black !important;
-    font-weight: 600 !important;
-}
-
-/* Buttons */
-button[kind="primary"] {
-    background-color: black !important;
-    color: white !important;
-    border-radius: 5px;
-    font-family: 'Century Gothic', sans-serif !important;
-}
-</style>
+    /* Expander title font */
+    .st-expander > summary {
+        font-family: 'Century Gothic', sans-serif !important;
+    }
+    </style>
 """, unsafe_allow_html=True)
+
 # === Logo + Title Section ===
 st.markdown("""
 <div style="text-align: center; padding-top: 10px;">
