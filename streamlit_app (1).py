@@ -275,7 +275,17 @@ with st.sidebar:
         """,
         unsafe_allow_html=True
     )
+# === FlexGen Logo & Footer (bottom of main page) ===
+st.markdown("""
+<hr style="margin-top: 40px; margin-bottom: 10px;">
 
+<div style="text-align: center; margin-top: 20px;">
+    <img src="https://github.com/TaNeekwa/Flexgen-PG3x/blob/main/Pictures/Screenshot%202025-06-03%20224337.png?raw=true" 
+         width="140" style="margin-bottom: 8px;">
+    <p style="font-size: 12px; color: gray;">Developed by FlexGen</p>
+    <p style="font-size: 12px; color: gray;">Powered by FlexGen Proposal Generator</p>
+</div>
+""", unsafe_allow_html=True)
 # === Submission Buttons ===
 st.markdown("""
 <style>
@@ -301,18 +311,6 @@ div.stButton > button:hover {
 </style>
 """, unsafe_allow_html=True)
 
-  # === FlexGen Logo & Footer (slightly padded, no scroll)
-    st.markdown(
-        """
-        <div style="text-align: center; margin-top: 35px;">
-            <img src="https://github.com/TaNeekwa/Flexgen-PG3x/blob/main/Pictures/Screenshot%202025-06-03%20224337.png?raw=true" 
-                 width="140" style="margin-bottom: 8px;">
-            <p style="font-size: 12px; color: gray;">Developed by FlexGen</p>
-            <p style="font-size: 12px; color: gray;">Powered by FlexGen Proposal Generator</p>
-        </div>
-        """,
-        unsafe_allow_html=True
-
 with st.container():
     st.markdown('<div class="button-row">', unsafe_allow_html=True)
     col1, col2 = st.columns([1, 1])
@@ -321,3 +319,5 @@ with st.container():
     with col2:
         st.button("💾 Save Draft", use_container_width=True)
     st.markdown('</div>', unsafe_allow_html=True)
+
+
