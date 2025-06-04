@@ -114,7 +114,7 @@ div.stButton > button:hover {
     color: white !important;
 }
 </style>
-
+""", unsafe_allow_html=True)
 
     # ✅ INSERT THIS IMMEDIATELY HERE, BEFORE ANY UI:
 st.markdown(css_theme, unsafe_allow_html=True)
