@@ -318,16 +318,22 @@ st.markdown("""
     justify-content: center;
     margin-top: 20px;
 }
-button[kind="secondary"] > div[data-testid="baseButton-secondary"] {
-    color: white !important;
-}
+
+/* Fixes for button text */
 div.stButton > button {
     background-color: #111 !important;
     color: white !important;
-    border-radius: 10px;
-    padding: 0.5rem 1.5rem;
-    font-weight: 600;
-    border: none;
+    border-radius: 10px !important;
+    padding: 0.5rem 1.5rem !important;
+    font-weight: 600 !important;
+    border: none !important;
+    text-align: center !important;
+}
+
+/* Improve contrast on hover */
+div.stButton > button:hover {
+    background-color: #333 !important;
+    color: white !important;
 }
 </style>
 """, unsafe_allow_html=True)
