@@ -148,7 +148,7 @@ with col2:
                 st.dataframe(df_preview, use_container_width=True)
         except Exception as e:
             st.error(f"Could not preview file: {e}")
-  )
+  
 # === Conditional Inputs ===
 if proposal_type == "EMS Proposal":
     st.markdown("### 🔌 EMS Proposal Configuration", unsafe_allow_html=True)
