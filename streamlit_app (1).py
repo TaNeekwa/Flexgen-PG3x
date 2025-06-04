@@ -191,35 +191,42 @@ if st.session_state.authenticated:
 
     st.markdown(f"<hr style='border: 3px solid {divider_color}; margin-top: 20px; margin-bottom: 30px;'>", unsafe_allow_html=True)
 
-    # === Proposal Type + Input Form Upload ===
-    col1, spacer, col2 = st.columns([2, 0.4, 3])  # Adjust layout as needed
+   # === Proposal Type + Input Form Upload ===
+col1, spacer, col2 = st.columns([2, 0.4, 3])  # Adjust layout as needed
 
-    with col1:
-        proposal_type = st.selectbox("🧩 Proposal Type", ["EMS Proposal", "Full Product Proposal"])
-        st.markdown(f"You selected: **{proposal_type}**")
+with col1:
+    st.markdown("### <strong>🧩 Proposal Type</strong>", unsafe_allow_html=True)
+    proposal_type = st.selectbox(
+        "",  # Hide default label
+        ["EMS Proposal", "Full Product Proposal"],
+        label_visibility="collapsed"
+    )
+    st.markdown(f"You selected: **{proposal_type}**")
 
-        st.markdown("### 👥 Business Development")
-        bd_rep = st.selectbox("BD Representative", [
-            "Bridget Nolan", "Tyler Davis", "Tara Jo Brooks", "Chris Ramirez", "Other"
-        ])
+    st.markdown("### <strong>👥 Business Development</strong>", unsafe_allow_html=True)
+    bd_rep = st.selectbox("BD Representative", [
+        "Bridget Nolan", "Tyler Davis", "Tara Jo Brooks", "Chris Ramirez", "Other"
+    ])
 
-    with col2:
-        uploaded_form = st.file_uploader(
-            "📤 Upload Input Form (Excel)",
-            type=["xlsx", "xlsm", "xls"],
-            help="Drop the input form here to auto-fill fields.",
-        )
+with col2:
+    st.markdown("### <strong>📤 Upload Input Form (Excel)</strong>", unsafe_allow_html=True)
+    uploaded_form = st.file_uploader(
+        "",  # Hide default label
+        type=["xlsx", "xlsm", "xls"],
+        help="Drop the input form here to auto-fill fields.",
+        label_visibility="collapsed"
+    )
 
-    if uploaded_form:
-        uploaded_form.seek(0)  # Reset pointer before reading
-        try:
-            excel_data = pd.ExcelFile(uploaded_form)
-            df_preview = pd.read_excel(excel_data, sheet_name=0, skiprows=7, nrows=20)
+if uploaded_form:
+    uploaded_form.seek(0)  # Reset pointer before reading
+    try:
+        excel_data = pd.ExcelFile(uploaded_form)
+        df_preview = pd.read_excel(excel_data, sheet_name=0, skiprows=7, nrows=20)
 
-            with st.expander("📄 Table Preview (Field Autofill View)", expanded=False):
-                st.dataframe(df_preview, use_container_width=True)
-        except Exception as e:
-            st.error(f"⚠️ Could not preview Excel data: {e}")
+        with st.expander("📄 Table Preview (Field Autofill View)", expanded=False):
+            st.dataframe(df_preview, use_container_width=True)
+    except Exception as e:
+        st.error(f"⚠️ Could not preview Excel data: {e}")
 
 # === Project & System Info ===
 st.markdown("<hr>", unsafe_allow_html=True)
