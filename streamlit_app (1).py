@@ -158,18 +158,6 @@ with col2:
                 st.dataframe(df_preview, use_container_width=True)
         except Exception as e:
             st.error(f"⚠️ Could not preview Excel data: {e}")
-  
-# === Conditional Inputs ===
-if proposal_type == "EMS Proposal":
-    st.markdown("### 🔌 EMS Proposal Configuration", unsafe_allow_html=True)
-    ems_comm_protocol = st.selectbox("EMS Communication Protocol", ["Modbus TCP", "DNP3", "IEC 61850", "Custom"])
-    ems_rack_type = st.selectbox("EMS Rack Type", ["Standard Rack", "Outdoor Cabinet", "Custom Integration"])
-    ems_networking = st.selectbox("Networking Requirements", ["Basic", "Redundant", "Isolated Secure VLAN"])
-elif proposal_type == "Full Product Proposal":
-    st.markdown("### 🏗️ Full Product Configuration", unsafe_allow_html=True)
-    enclosure_type = st.selectbox("Enclosure Type", ["ISO Container", "Walk-in Enclosure", "Custom Built"])
-    hvac_option = st.selectbox("HVAC Type", ["Split System", "Packaged Unit", "Free Cooling", "None"])
-    inverter_mounting = st.selectbox("Inverter Mounting", ["Skid Mounted", "Pad Mounted", "Integrated"])
 
 # === Project & System Info ===
 st.markdown("<hr>", unsafe_allow_html=True)
