@@ -257,6 +257,44 @@ with st.sidebar:
         """,
         unsafe_allow_html=True
     )
+    # === FlexBot Smart Assistant ===
+import openai
+
+st.markdown("---")
+st.markdown("### 🤖 Need Help? Ask FlexBot")
+
+with st.expander("💬 Ask a question about PCS, Batteries, Scope, or Calculations"):
+    st.markdown(
+        """
+        - _“How do I calculate PCS block count?”_  
+        - _“What’s included in preventative maintenance?”_  
+        - _“What’s the size of a Cornex M5 battery?”_
+        """
+    )
+    user_q = st.text_area("Ask a question:")
+
+    if st.button("Ask FlexBot"):
+        if user_q:
+            with st.spinner("Thinking..."):
+                openai.api_key = st.secrets["OPENAI_API_KEY"]  # or hardcode for dev
+                response = openai.ChatCompletion.create(
+                    model="gpt-4",
+                    messages=[
+                        {
+                            "role": "system",
+                            "content": (
+                                "You are FlexBot, a helpful assistant trained on FlexGen’s proposal generation process. "
+                                "You know system sizing, PCS brands like EPC or Sineng, battery sizing for Cornex/CATL/BYD, "
+                                "how to calculate block counts, and what's included in scope of services like grid testing, PM, etc."
+                            )
+                        },
+                        {"role": "user", "content": user_q}
+                    ],
+                    max_tokens=300
+                )
+                ai_reply = response['choices'][0]['message']['content']
+                st.success("**FlexBot Says:**")
+                st.info(ai_reply)
 # === Submission Buttons ===
 col1, col2 = st.columns([1, 1])
 with col1:
