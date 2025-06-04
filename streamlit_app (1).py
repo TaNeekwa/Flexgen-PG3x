@@ -259,42 +259,26 @@ with st.sidebar:
     )
     # === FlexBot Smart Assistant ===
 import openai
+import streamlit as st
 
-st.markdown("---")
-st.markdown("### 🤖 Need Help? Ask FlexBot")
+# === AI Assistant ===
+with st.expander("🤖 Need Help? Ask FlexBot!", expanded=False):
+    user_question = st.text_input("Type your question about PCS, batteries, block count, etc.")
 
-with st.expander("💬 Ask a question about PCS, Batteries, Scope, or Calculations"):
-    st.markdown(
-        """
-        - _“How do I calculate PCS block count?”_  
-        - _“What’s included in preventative maintenance?”_  
-        - _“What’s the size of a Cornex M5 battery?”_
-        """
-    )
-    user_q = st.text_area("Ask a question:")
-
-    if st.button("Ask FlexBot"):
-        if user_q:
-            with st.spinner("Thinking..."):
-                openai.api_key = st.secrets["OPENAI_API_KEY"]  # or hardcode for dev
+    if user_question:
+        with st.spinner("FlexBot is thinking..."):
+            openai.api_key = st.secrets["OPENAI_API_KEY"]
+            try:
                 response = openai.ChatCompletion.create(
                     model="gpt-4",
                     messages=[
-                        {
-                            "role": "system",
-                            "content": (
-                                "You are FlexBot, a helpful assistant trained on FlexGen’s proposal generation process. "
-                                "You know system sizing, PCS brands like EPC or Sineng, battery sizing for Cornex/CATL/BYD, "
-                                "how to calculate block counts, and what's included in scope of services like grid testing, PM, etc."
-                            )
-                        },
-                        {"role": "user", "content": user_q}
-                    ],
-                    max_tokens=300
+                        {"role": "system", "content": "You are FlexBot, an expert assistant for proposal engineers at FlexGen. You help answer questions about PCS systems, batteries, block count calculations, and proposal structure. Keep your answers friendly and clear."},
+                        {"role": "user", "content": user_question}
+                    ]
                 )
-                ai_reply = response['choices'][0]['message']['content']
-                st.success("**FlexBot Says:**")
-                st.info(ai_reply)
+                st.success(response.choices[0].message.content)
+            except Exception as e:
+                st.error(f"Something went wrong: {e}")
 # === Submission Buttons ===
 col1, col2 = st.columns([1, 1])
 with col1:
