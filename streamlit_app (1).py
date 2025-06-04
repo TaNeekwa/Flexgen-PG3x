@@ -29,7 +29,12 @@ if not st.session_state.authenticated:
             st.error("Invalid username or password.")
 
     st.stop()  # 🔒 Halt execution until authenticated
-
+# === LOGOUT BUTTON (only show when authenticated) ===
+if st.session_state.get("authenticated"):
+    with st.sidebar:
+        if st.button("🔓 Logout"):
+            st.session_state.authenticated = False
+            st.rerun()
 # === Session State for Dark Mode ===
 if "dark_mode" not in st.session_state:
     st.session_state.dark_mode = False
