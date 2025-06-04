@@ -1,11 +1,28 @@
 import pandas as pd
 import os
 import streamlit as st
+
 try:
-    
     import openpyxl  # noqa: F401 - used implicitly by pandas
 except ImportError:  # pragma: no cover - just show a friendly error
     openpyxl = None
+    import base64
+
+def show_excel_as_downloadable_preview(uploaded_file):
+    if uploaded_file is not None:
+        # Read and encode Excel binary content
+        file_content = uploaded_file.read()
+        b64 = base64.b64encode(file_content).decode()
+
+        # Render Excel file as embedded viewer in browser
+        href = f'''
+            <iframe
+                src="data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,{b64}"
+                width="100%" height="600px"
+                style="border: 1px solid #ccc; border-radius: 6px;"
+            ></iframe>
+        '''
+        st.markdown(href, unsafe_allow_html=True)
 
 # === Page Settings (MUST be first) ===
 st.set_page_config(page_title="Proposal Generator", layout="wide")
