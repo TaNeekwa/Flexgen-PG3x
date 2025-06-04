@@ -11,24 +11,31 @@ except ImportError:
 # === Page Settings ===
 st.set_page_config(page_title="Proposal Generator", layout="wide")
 
-# === 🔐 LOGIN LOGIC ===
+# === LOGIN LOGIC WITH STYLING ===
 if "authenticated" not in st.session_state:
     st.session_state.authenticated = False
 
 if not st.session_state.authenticated:
-    st.title("🔐 Login")
+    # Styled login layout with logo and black box
+    st.markdown("""
+        <div style='display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 40px;'>
+            <img src='https://raw.githubusercontent.com/TaNeekwa/Flexgen-PG3x/main/FlexGen_Primary_Logo_-_Gradient.svg.png' width='250' style='margin-bottom: 20px;' />
+            <div style='background-color: #111; padding: 40px; border-radius: 12px; width: 100%; max-width: 400px; box-shadow: 0 4px 20px rgba(0,0,0,0.4);'>
+                <h1 style='color: white; text-align: center; margin-bottom: 30px;'>🔐 Login</h1>
+    """, unsafe_allow_html=True)
 
-    username = st.text_input("Username")
-    password = st.text_input("Password", type="password")
+    username = st.text_input("Username", key="login_user_input")
+    password = st.text_input("Password", type="password", key="login_pass_input")
 
     if st.button("Login"):
         if username in USER_CREDENTIALS and USER_CREDENTIALS[username] == password:
             st.session_state.authenticated = True
-            st.rerun()  # ✅ Updated to new Streamlit standard
+            st.rerun()  # ✅ Use st.rerun() instead of deprecated experimental_rerun
         else:
             st.error("Invalid username or password.")
 
-    st.stop()  # 🔒 Halt execution until authenticated
+    st.markdown("</div></div>", unsafe_allow_html=True)
+    st.stop()
 # === LOGOUT BUTTON (only show when authenticated) ===
 if st.session_state.get("authenticated"):
     with st.sidebar:
