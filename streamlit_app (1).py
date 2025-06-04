@@ -124,7 +124,7 @@ st.markdown("""
     <img src="https://raw.githubusercontent.com/TaNeekwa/Flexgen-PG3x/main/FlexGen_Primary_Logo_-_Gradient.svg.png" 
          alt="FlexGen Logo" width="300" />
     <h1 style="font-size: 42px; margin-top: 20px;">
-        Proposal Generator - FlexGen Edition ⚡
+        Proposal Generator - FlexGen Edition 
     </h1>
     <p style="font-size: 18px;">Enter project details below to generate your custom proposal.</p>
 </div>
