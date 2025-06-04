@@ -300,16 +300,21 @@ div.stButton > button {
     border-radius: 10px !important;
     padding: 0.5rem 1.5rem !important;
     font-weight: 600 !important;
-    border: white !important;
+    border: 1px solid white !important;
     text-align: center !important;
 }
+
+/* ✅ Ensure text inside the button also stays white */
+div.stButton > button span {
+    color: white !important;
+}
+
 div.stButton > button:hover {
     background-color: #333 !important;
     color: white !important;
 }
 </style>
 """, unsafe_allow_html=True)
-
 with st.container():
     st.markdown('<div class="button-row">', unsafe_allow_html=True)
     col1, col2 = st.columns([1, 1])
