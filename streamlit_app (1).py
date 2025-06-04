@@ -176,7 +176,8 @@ with col2:
         pcs_brand = st.selectbox("PCS Brand", ["EPC Power", "Sungrow", "Sineng", "Power Electronics", "Other"])
         pcs_size = st.number_input("PCS Size per Unit (MW)", min_value=0.0, step=0.1)
         pcs_qty = st.number_input("Number of PCS Blocks", min_value=0, step=1)
-
+# === Divider ===
+    st.markdown("<hr>", unsafe_allow_html=True)
 # === BD Details, Uploads, Advanced Settings ===
 with st.expander("👥 Business Development Details", expanded=True):
     bd_rep = st.selectbox("BD Representative", ["Bridget Nolan", "Tyler Davis", "Tara Jo Brooks", "Chris Ramirez", "Other"])
@@ -185,9 +186,8 @@ with st.expander("👥 Business Development Details", expanded=True):
         st.image(client_logo, caption="Client Logo", width=150)
     client_file = st.file_uploader("📎 Attach Client Input or Specs (Optional)", type=["pdf", "docx", "xlsx"])
 
-with st.expander("⚙️ Advanced Settings (Optional)", expanded=False):
-    custom_code = st.text_input("Internal Project Code")
-    timezone = st.selectbox("Region Timezone", ["EST", "CST", "MST", "PST", "GMT", "UTC"])
+# === Divider ===
+    st.markdown("<hr>", unsafe_allow_html=True)
 
 # === Scope + Currency ===
 col1, col2 = st.columns(2)
