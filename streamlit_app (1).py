@@ -102,18 +102,20 @@ else:
 # ✅ Apply styles now that dark_mode is defined
 st.markdown(css_theme, unsafe_allow_html=True)
 
- # === FlexGen Logo & Footer (slightly padded, no scroll)
-    st.markdown(
-        """
-        <div style="text-align: center; margin-top: 35px;">
-            <img src="https://github.com/TaNeekwa/Flexgen-PG3x/blob/main/Pictures/Screenshot%202025-06-03%20224337.png?raw=true" 
-                 width="140" style="margin-bottom: 8px;">
-            <p style="font-size: 12px; color: gray;">Developed by FlexGen</p>
-            <p style="font-size: 12px; color: gray;">Powered by FlexGen Proposal Generator</p>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
+  # ✅ INSERT THIS IMMEDIATELY HERE, BEFORE ANY UI:
+st.markdown(css_theme, unsafe_allow_html=True)
+# === Logo + Title Section ===
+st.markdown("""
+<div style="text-align: center; padding-top: 10px;">
+    <img src="https://raw.githubusercontent.com/TaNeekwa/Flexgen-PG3x/main/FlexGen_Primary_Logo_-_Gradient.svg.png" 
+         alt="FlexGen Logo" width="300" />
+    <h1 style="font-size: 42px; margin-top: 20px;">
+        Proposal Generator - FlexGen Edition 
+    </h1>
+    <p style="font-size: 18px;">Enter project details below to generate your custom proposal.</p>
+</div>
+""", unsafe_allow_html=True)
+
 
 # ✅ Apply styles
 st.markdown(css_theme, unsafe_allow_html=True)
