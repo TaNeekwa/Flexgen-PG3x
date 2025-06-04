@@ -113,16 +113,18 @@ with top_col1:
     """, unsafe_allow_html=True)
 
 with top_col2:
-    st.markdown("""
-    <div style="text-align: center; padding-top: 2;">
-        <img src="https://raw.githubusercontent.com/TaNeekwa/Flexgen-PG3x/main/FlexGen_Primary_Logo_-_Gradient.svg.png" 
-             alt="FlexGen Logo" width="300" />
-        <h1 style="font-size: 42px; margin-top: 5px;">
-            Proposal Generator - FlexGen Edition 
-        </h1>
-        <p style="font-size: 18px; margin-bottom: 10px;">Enter project details below to generate your custom proposal.</p>
-    </div>
-    """, unsafe_allow_html=True)
+  st.markdown("""
+<div style="width: 100vw; display: flex; flex-direction: column; align-items: center; justify-content: center; padding-top: 10px;">
+    <img src="https://raw.githubusercontent.com/TaNeekwa/Flexgen-PG3x/main/FlexGen_Primary_Logo_-_Gradient.svg.png" 
+         alt="FlexGen Logo" width="300" style="margin-bottom: 10px;" />
+    <h1 style="font-size: 42px; text-align: center; margin-top: 0;">
+        Proposal Generator - FlexGen Edition
+    </h1>
+    <p style="font-size: 18px; text-align: center;">
+        Enter project details below to generate your custom proposal.
+    </p>
+</div>
+""", unsafe_allow_html=True)
 
 # ✅ Apply styles
 st.markdown(css_theme, unsafe_allow_html=True)
