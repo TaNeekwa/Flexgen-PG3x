@@ -1,7 +1,6 @@
-import streamlit as st
-from PIL import Image
-import os
 import pandas as pd
+import os
+import streamlit as st
 try:
     
     import openpyxl  # noqa: F401 - used implicitly by pandas
