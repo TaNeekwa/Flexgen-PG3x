@@ -1,68 +1,75 @@
 import streamlit as st
 
-# === Page Settings (MUST be first) ===
-st.set_page_config(page_title="Proposal Generator", layout="wide")
-
 st.markdown(
     """
     <style>
-    /* Global font and background */
-    body {
-        background-color: white !important;
-        font-family: 'Century Gothic', sans-serif !important;
-    }
-    .stApp {
-        background-color: white !important;
+    /* FULL OVERRIDE: Replace base theme for all inputs, dropdowns, etc. */
+
+    /* General app background and font */
+    html, body, .stApp {
+        background-color: #ffffff !important;
+        color: #000000 !important;
         font-family: 'Century Gothic', sans-serif !important;
     }
 
-    /* Widget base styling */
+    /* Selectbox + dropdown style override */
     div[data-baseweb="select"] {
         background-color: white !important;
-        border: 1px solid black !important;
+        border: 1px solid #000000 !important;
         border-radius: 6px !important;
         color: black !important;
+        padding: 5px 10px !important;
     }
 
-    div[data-baseweb="select"]:hover {
-        background-color: #f5f5f5 !important;
-    }
-
-    /* Selected value text */
-    div[data-baseweb="select"] > div {
+    /* Dropdown when open */
+    div[data-baseweb="popover"] {
+        background-color: white !important;
         color: black !important;
+        border: 1px solid #000000 !important;
+        border-radius: 0px 0px 6px 6px !important;
     }
 
-    /* Hide weird pill/scrollbar overlay */
-    div[data-baseweb="select"] [data-baseweb="tag"] {
-        display: none !important;
+    /* Text in select and dropdown */
+    div[data-baseweb="select"] div,
+    div[data-baseweb="option"] {
+        color: black !important;
+        font-family: 'Century Gothic', sans-serif !important;
     }
 
-    /* Input boxes */
+    /* Input fields */
     input, textarea {
         background-color: white !important;
         color: black !important;
         border: 1px solid black !important;
-        border-radius: 6px !important;
+        border-radius: 5px !important;
+        padding: 6px 10px;
     }
 
-    /* Radio buttons + text */
-    label, .stRadio {
+    /* Expander headers */
+    summary {
+        font-family: 'Century Gothic', sans-serif !important;
         color: black !important;
-        font-family: 'Century Gothic', sans-serif !important;
-    }
-
-    /* Expander title text */
-    .st-expander > summary {
-        font-family: 'Century Gothic', sans-serif !important;
         font-weight: 600 !important;
-        color: black !important;
     }
+
+    /* Label text */
+    label, .stRadio label {
+        color: black !important;
+        font-family: 'Century Gothic', sans-serif !important;
+    }
+
+    /* Button style */
+    button[kind="primary"] {
+        background-color: black !important;
+        color: white !important;
+        border-radius: 5px;
+        font-family: 'Century Gothic', sans-serif !important;
+    }
+
     </style>
     """,
     unsafe_allow_html=True
 )
-
 # === Logo + Title Section ===
 st.markdown("""
 <div style="text-align: center; padding-top: 10px;">
