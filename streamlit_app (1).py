@@ -1,5 +1,16 @@
+[media pointer="file-service://file-XFsnjBmFqbMwfavPC2yUkv"]
+[media pointer="file-service://file-WS7KUFPrw9T6LCUYgWbsSA"]
+so i just went back to this one because i can see it now. now i just need to make sure that the text color within the drop downs are white
+
+import streamlit as st
+
+# === Page Settings (MUST be first) ===
+st.set_page_config(page_title="Proposal Generator", layout="wide")
+
+# === Global Style Overrides ===
 st.markdown("""
     <style>
+    /* Full white background */
     body, .stApp {
         background-color: white !important;
         font-family: 'Century Gothic', sans-serif !important;
@@ -11,6 +22,7 @@ st.markdown("""
         color: black !important;
     }
 
+    /* Center logo */
     img {
         display: block;
         margin-left: auto;
@@ -32,23 +44,12 @@ st.markdown("""
         border-radius: 4px !important;
     }
 
-    /* Force text in dropdowns to show white */
-    .css-1wa3eu0, .css-1okebmr, .css-1g6gooi, .css-14el2xx, .css-qc6sy-singleValue {
-        color: white !important;
-    }
-
-    div[data-baseweb="select"] * {
-        color: white !important;
-    }
-
-    input, select, textarea {
-        color: white !important;
-    }
-
+    /* Hover / active state for dropdowns */
     .stSelectbox:hover, .stTextInput:hover, .stNumberInput:hover {
         background-color: #f2f2f2 !important;
     }
 
+    /* Expander title font */
     .st-expander > summary {
         font-family: 'Century Gothic', sans-serif !important;
     }
