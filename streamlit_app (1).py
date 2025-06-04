@@ -1,34 +1,26 @@
 import streamlit as st
 
-
-# === Page Settings (MUST be first) ===
-st.set_page_config(page_title="Proposal Generator", layout="wide")
-
 # === Theme Toggle ===
 st.markdown("##### Switch Theme Mode")
 dark_mode = st.toggle("🌞 Light / 🌙 Dark")
 
 # === Conditional Styling ===
 if dark_mode:
-    css_theme = """
-    <style>
+    css_theme = """<style>
     body, .stApp {
         background-color: #111 !important;
         color: white !important;
         font-family: 'Century Gothic', sans-serif !important;
     }
-
     h1, h2, h3, h4, p, label, div, span {
         color: white !important;
     }
-
     img {
         display: block;
         margin-left: auto;
         margin-right: auto;
         padding-bottom: 10px;
     }
-
     .stTextInput > div > div > input,
     .stSelectbox > div,
     .stNumberInput > div > input,
@@ -41,30 +33,24 @@ if dark_mode:
         border: 1px solid white !important;
         border-radius: 4px !important;
     }
-
     .css-1wa3eu0, .css-1okebmr, .css-1g6gooi, .css-14el2xx, .css-qc6sy-singleValue {
         color: white !important;
     }
-
     div[data-baseweb="select"] * {
         color: white !important;
     }
-
     input, select, textarea {
         color: white !important;
     }
-
     .stSelectbox:hover, .stTextInput:hover, .stNumberInput:hover {
         background-color: #333 !important;
     }
-
     .st-expander > summary {
         color: white !important;
     }
-    </style>
-    """
+    </style>"""
 else:
-   css_theme = """<style>
+    css_theme = """<style>
     body, .stApp {
         background-color: #ffffff !important;
         color: #1a1a1a !important;
@@ -107,28 +93,7 @@ else:
     .st-expander > summary {
         color: #1a1a1a !important;
     }
-
-    /* === Sidebar overrides === */
-    section[data-testid="stSidebar"] {
-        background-color: #111111 !important;
-        color: white !important;
-    }
-    section[data-testid="stSidebar"] div[data-baseweb="select"] * {
-        color: white !important;
-    }
-    section[data-testid="stSidebar"] .stSelectbox div,
-    section[data-testid="stSidebar"] .stRadio label,
-    section[data-testid="stSidebar"] label,
-    section[data-testid="stSidebar"] span {
-        color: white !important;
-    }
-    section[data-testid="stSidebar"] div[data-baseweb="popover"] {
-        background-color: #222 !important;
-        color: white !important;
-        border: 1px solid #444 !important;
-    }
     </style>"""
-
 # === Logo + Title Section ===
 st.markdown("""
 <div style="text-align: center; padding-top: 10px;">
