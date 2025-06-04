@@ -109,7 +109,8 @@ else:
         color: #1a1a1a !important;
     }
     </style>"""
-
+# ✅ Apply theme CSS
+st.markdown(css_theme, unsafe_allow_html=True)
   # ✅ INSERT THIS IMMEDIATELY HERE, BEFORE ANY UI:
 # === Logo + Title Section ===
 st.markdown("""
