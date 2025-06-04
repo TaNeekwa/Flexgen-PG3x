@@ -286,28 +286,6 @@ with st.container():
         unsafe_allow_html=True
     )
 
-    with st.expander("🤖 FlexBot Help", expanded=False):
-        st.markdown("Ask me anything about PCS, battery sizing, block counts, proposal flow, or configuration logic.")
-        user_input = st.text_area("What do you need help with?", key="flexbot_input")
-        
-        if st.button("Ask FlexBot", key="flexbot_ask"):
-            with st.spinner("FlexBot is thinking..."):
-                try:
-                    openai.api_key = st.secrets["OPENAI_API_KEY"]
-                    response = openai.ChatCompletion.create(
-                        model="gpt-4",
-                        messages=[
-                            {"role": "system", "content": (
-                                "You are FlexBot, a helpful AI embedded in a proposal generation app. "
-                                "You assist with configuration logic, PCS/battery selection, sizing formulas, and technical questions."
-                            )},
-                            {"role": "user", "content": user_input}
-                        ]
-                    )
-                    st.success(response.choices[0].message.content.strip())
-                except Exception as e:
-                    st.error(f"⚠️ FlexBot failed: {e}")
-
 # === Sidebar Summary ===
 with st.sidebar:
     st.markdown("### 🧾 Proposal Summary")
