@@ -3,6 +3,58 @@ import streamlit as st
 
 # === Page Settings (MUST be first) ===
 st.set_page_config(page_title="Proposal Generator", layout="wide")
+css_theme = """
+<style>
+body, .stApp {
+    background-color: #ffffff !important;
+    color: #1a1a1a !important;
+    font-family: 'Century Gothic', sans-serif !important;
+}
+
+/* Headings and labels */
+h1, h2, h3, h4, p, label, div, span {
+    color: #1a1a1a !important;
+}
+
+/* Inputs */
+.stTextInput > div > div > input,
+.stSelectbox > div,
+.stNumberInput > div > input,
+.stDateInput > div > input,
+.stTextArea > div > textarea,
+.stRadio > div > label,
+.stCheckbox > div {
+    background-color: #ffffff !important;
+    color: #1a1a1a !important;
+    border: 1px solid #d9d9d9 !important;
+    border-radius: 6px !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06) !important;
+}
+
+/* Dropdown text */
+.css-1wa3eu0, .css-1okebmr, .css-1g6gooi, .css-14el2xx, .css-qc6sy-singleValue {
+    color: #1a1a1a !important;
+}
+div[data-baseweb="select"] * {
+    color: #1a1a1a !important;
+}
+
+/* Inputs in general */
+input, select, textarea {
+    color: #1a1a1a !important;
+}
+
+/* Hover */
+.stSelectbox:hover, .stTextInput:hover, .stNumberInput:hover {
+    background-color: #f7f7f7 !important;
+}
+
+/* Expander title */
+.st-expander > summary {
+    color: #1a1a1a !important;
+}
+</style>
+"""
 
 # === Theme Toggle ===
 dark_mode = st.toggle("🌗 Dark Mode")
