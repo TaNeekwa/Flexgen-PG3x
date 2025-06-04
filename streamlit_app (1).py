@@ -300,8 +300,8 @@ div.stButton > button:hover {
 }
 </style>
 """, unsafe_allow_html=True)
-)
-  # === Header Block (outside of columns) ===
+
+# === Header Block (centered) ===
 with st.container():
     st.markdown("""
     <div style="width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; padding-top: 10px;">
