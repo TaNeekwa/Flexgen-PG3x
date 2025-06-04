@@ -331,10 +331,12 @@ div.stButton > button {
 }
 </style>
 """, unsafe_allow_html=True)
-col1, col2 = st.columns([1, 1])
-with col1:
-    if st.button("🚀 Generate Proposal"):
-        st.success("Proposal generation initiated!")
-with col2:
-    if st.button("💾 Save Draft"):
-        st.info("Proposal draft saved successfully.")
+with st.container():
+    st.markdown('<div class="button-row">', unsafe_allow_html=True)
+    col1, col2 = st.columns([1, 1])
+    with col1:
+        st.button("🚀 Generate Proposal", use_container_width=True)
+    with col2:
+        st.button("💾 Save Draft", use_container_width=True)
+    st.markdown('</div>', unsafe_allow_html=True)
+
