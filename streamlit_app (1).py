@@ -48,12 +48,6 @@ if not st.session_state.authenticated:
 
     # Stop the app until logged in
     st.stop()
-# === LOGOUT BUTTON (only show when authenticated) ===
-if st.session_state.get("authenticated"):
-    with st.sidebar:
-        if st.button("🔓 Logout"):
-            st.session_state.authenticated = False
-            st.rerun()
 # === Session State for Dark Mode ===
 if "dark_mode" not in st.session_state:
     st.session_state.dark_mode = False
