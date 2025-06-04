@@ -26,9 +26,10 @@ if not st.session_state.authenticated:
         col1, col2, col3 = st.columns([1, 2, 1])
         with col2:
             st.markdown("""
-                <div style='background-color: #FFFFFF; padding: 7px 11px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.4);'>
-                    <h3 style='color: black; text-align: center; margin-bottom: 20px;'>🔐 Login</h3>
-            """, unsafe_allow_html=True)
+    <div style='display: flex; justify-content: center;'>
+        <div style='background-color: #111; padding: 12px 18px; border-radius: 10px; width: 100%; max-width: 330px; box-shadow: 0 4px 14px rgba(0,0,0,0.25);'>
+            <h3 style='color: white; text-align: center; margin-bottom: 16px;'>🔐 Login</h3>
+""", unsafe_allow_html=True)
 
             username = st.text_input("Username", placeholder="Enter username", label_visibility="collapsed", key="login_user_input")
             password = st.text_input("Password", type="password", placeholder="Enter password", label_visibility="collapsed", key="login_pass_input")
