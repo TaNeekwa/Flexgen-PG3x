@@ -1,8 +1,11 @@
-name: flexgen-pg3x
-dependencies:
-  - python=3.10
-  - pip
-  - pip:
-    - streamlit
-    - openai
-    - pillow
+ name: flexgen-pg3x
+ dependencies:
+   - python=3.10
+   - pip
+   - pip:
+     - streamlit
+     - openai
+     - pillow
++    - pandas
++    - openpyxl
+ 
