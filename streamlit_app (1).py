@@ -99,11 +99,7 @@ else:
     }
     </style>"""
 
-# ✅ Apply styles now that dark_mode is defined
-st.markdown(css_theme, unsafe_allow_html=True)
-
   # ✅ INSERT THIS IMMEDIATELY HERE, BEFORE ANY UI:
-st.markdown(css_theme, unsafe_allow_html=True)
 # === Logo + Title Section ===
 st.markdown("""
 <div style="text-align: center; padding-top: 10px;">
@@ -118,8 +114,7 @@ st.markdown("""
 
 # ✅ Add divider here
 st.markdown("<hr style='margin-top: -10px; margin-bottom: 20px;'>", unsafe_allow_html=True)
-# ✅ Apply styles
-st.markdown(css_theme, unsafe_allow_html=True)
+
 
 # ✅ Add divider here
 st.markdown("<hr style='margin-top: -10px; margin-bottom: 20px;'>", unsafe_allow_html=True)
