@@ -2,11 +2,9 @@ import streamlit as st
 
 # === Page Settings (MUST be first) ===
 st.set_page_config(page_title="Proposal Generator", layout="wide")
+# === Theme Toggle ===
 st.markdown("##### Switch Theme Mode")
 dark_mode = st.toggle("🌞 Light / 🌙 Dark")
-
-# === Theme Toggle ===
-dark_mode = st.toggle("🌗 Dark Mode")
 
 # === Conditional Styling ===
 if dark_mode:
