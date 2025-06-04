@@ -203,11 +203,11 @@ st.sidebar.markdown("""
 <br><br><hr>
 <div style="text-align: center; margin-top: 30px;">
     <!-- First image -->
-    <img src="https://your-first-image-link.com/image1.png" 
+    <img src="https://github.com/TaNeekwa/Flexgen-PG3x/blob/main/Pictures/Screenshot%202025-06-03%20224827.png" 
          width="140" style="margin-bottom: 10px;" alt="Your First Image" />
 
     <!-- Second image (FlexGen logo or another) -->
-    <img src="https://raw.githubusercontent.com/TaNeekwa/Flexgen-PG3x/main/FlexGen_Primary_Logo_-_Gradient.svg.png" 
+    <img src="https://github.com/TaNeekwa/Flexgen-PG3x/blob/main/Pictures/Screenshot%202025-06-03%20224337.png" 
          width="150" style="margin-top: 10px;" alt="FlexGen Logo" />
 
     <p style="font-size: 12px; color: gray;">Powered by FlexGen Proposal Generator</p>
