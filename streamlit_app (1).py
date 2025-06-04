@@ -16,23 +16,26 @@ if "authenticated" not in st.session_state:
     st.session_state.authenticated = False
 
 if not st.session_state.authenticated:
-    # Styled login layout with logo and black box
+    # Styled login layout with logo and black form box
     st.markdown("""
         <div style='display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 40px;'>
-            <img src='https://raw.githubusercontent.com/TaNeekwa/Flexgen-PG3x/main/FlexGen_Primary_Logo_-_Gradient.svg.png' width='250' style='margin-bottom: 20px;' />
-            <div style='background-color: #111; padding: 5px; border-radius: 12px; width: 100%; max-width: 200px; box-shadow: 0 4px 10px rgba(0,0,0,0.4);'>
-                <h1 style='color: white; text-align: center; margin-bottom: 10px;'>🔐 Login</h1>
+            <img src='https://raw.githubusercontent.com/TaNeekwa/Flexgen-PG3x/main/FlexGen_Primary_Logo_-_Gradient.svg.png' width='200' style='margin-bottom: 20px;' />
+            <div style='background-color: #111; padding: 30px 20px; border-radius: 12px; width: 100%; max-width: 350px; box-shadow: 0 4px 20px rgba(0,0,0,0.4);'>
+                <h2 style='color: white; text-align: center; margin-bottom: 25px;'>🔐 Login</h2>
     """, unsafe_allow_html=True)
 
-    username = st.text_input("Username", key="login_user_input")
-    password = st.text_input("Password", type="password", key="login_pass_input")
+    with st.container():
+        username = st.text_input("Username", key="login_user_input", label_visibility="collapsed", placeholder="Enter username")
+        password = st.text_input("Password", type="password", key="login_pass_input", label_visibility="collapsed", placeholder="Enter password")
 
-    if st.button("Login"):
-        if username in USER_CREDENTIALS and USER_CREDENTIALS[username] == password:
-            st.session_state.authenticated = True
-            st.rerun()  # ✅ Use st.rerun() instead of deprecated experimental_rerun
-        else:
-            st.error("Invalid username or password.")
+        st.markdown("<div style='text-align: center;'>", unsafe_allow_html=True)
+        if st.button("Login"):
+            if username in USER_CREDENTIALS and USER_CREDENTIALS[username] == password:
+                st.session_state.authenticated = True
+                st.rerun()
+            else:
+                st.error("Invalid username or password.")
+        st.markdown("</div>", unsafe_allow_html=True)
 
     st.markdown("</div></div>", unsafe_allow_html=True)
     st.stop()
