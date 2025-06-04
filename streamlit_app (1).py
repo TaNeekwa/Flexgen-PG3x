@@ -3,6 +3,8 @@ import openai
 from PIL import Image
 # === Page Settings (MUST be first) ===
 st.set_page_config(page_title="Proposal Generator", layout="wide")
+with open("flexbot_component/flexbot_popup.html", "r") as f:
+    st.components.v1.html(f.read(), height=500, scrolling=False)
 
 # === Theme Toggle ===
 st.markdown("##### Switch Theme Mode")
@@ -245,6 +247,48 @@ with col2:
 
 
 from PIL import Image
+# === FlexBot Assistant (Styled Chat Expander) ===
+with st.container():
+    st.markdown(
+        """
+        <style>
+        .floating-box {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: white;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0px 2px 10px rgba(0,0,0,0.2);
+            z-index: 9999;
+            width: 300px;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
+    with st.expander("🤖 FlexBot Help", expanded=False):
+        st.markdown("Ask me anything about PCS, battery sizing, block counts, proposal flow, or configuration logic.")
+        user_input = st.text_area("What do you need help with?", key="flexbot_input")
+        
+        if st.button("Ask FlexBot", key="flexbot_ask"):
+            with st.spinner("FlexBot is thinking..."):
+                try:
+                    openai.api_key = st.secrets["OPENAI_API_KEY"]
+                    response = openai.ChatCompletion.create(
+                        model="gpt-4",
+                        messages=[
+                            {"role": "system", "content": (
+                                "You are FlexBot, a helpful AI embedded in a proposal generation app. "
+                                "You assist with configuration logic, PCS/battery selection, sizing formulas, and technical questions."
+                            )},
+                            {"role": "user", "content": user_input}
+                        ]
+                    )
+                    st.success(response.choices[0].message.content.strip())
+                except Exception as e:
+                    st.error(f"⚠️ FlexBot failed: {e}")
 
 # === Sidebar Summary ===
 with st.sidebar:
