@@ -7,11 +7,11 @@ try:
     import openpyxl  # noqa: F401 - used implicitly by pandas
 except ImportError:
     openpyxl = None
-def show_excel_as_downloadable_preview(uploaded_file):
-    if uploaded_file is not None:
-        # Read and encode Excel binary content
-        file_content = uploaded_file.read()
-        b64 = base64.b64encode(file_content).decode()
+def get_excel_download_link(uploaded_file):
+    # Reset the file pointer before reading
+    uploaded_file.seek(0)
+    b64 = base64.b64encode(uploaded_file.read()).decode()
+    return f'<a href="data:application/octet-stream;base64,{b64}" download="InputForm.xlsx">📥 Download and view in Excel</a>'
 
         # Render Excel file as embedded viewer in browser
         href = f'''
@@ -148,8 +148,18 @@ with col2:
     )
 
     if uploaded_form:
-        st.markdown("### 🖼️ Visual Input Form Preview (Original Format)")
-        show_excel_as_downloadable_preview(uploaded_form)
+        st.markdown("### 📥 Open Full Form in Excel")
+        st.markdown(get_excel_download_link(uploaded_form), unsafe_allow_html=True)
+
+        # Reset again before reading with pandas
+        uploaded_form.seek(0)
+        try:
+            excel_data = pd.ExcelFile(uploaded_form)
+            df_preview = pd.read_excel(excel_data, sheet_name=0, skiprows=7, nrows=20)
+            with st.expander("📄 Table Preview (Field Autofill View)", expanded=False):
+                st.dataframe(df_preview, use_container_width=True)
+        except Exception as e:
+            st.error(f"⚠️ Could not preview Excel data: {e}")
   
 # === Conditional Inputs ===
 if proposal_type == "EMS Proposal":
