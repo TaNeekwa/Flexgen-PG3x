@@ -42,7 +42,14 @@ if dark_mode:
         color: white !important;
         font-family: 'Century Gothic', sans-serif !important;
     }
-    h1, h2, h3, h4, p, label, div, span {
+    }
+    h1, h2, h3, h4, p, label {
+        color: white !important;
+    }
+    div.stButton > button {
+        color: white !important;
+    }
+    div.stButton > button span {
         color: white !important;
     }
     img {
@@ -81,20 +88,20 @@ else:
         font-family: 'Century Gothic', sans-serif !important;
     }
     h1, h2, h3, h4, p, label {
-    color: #1a1a1a !important;
-}
-section[data-testid="stSidebar"] {
-    background-color: #1a1a1a !important;
-    color: white !important;
-}
-section[data-testid="stSidebar"] * {
-    color: white !important;
-}
-div.stButton > button {
-    color: white !important;
-}
-div.stButton > button span {
-    color: white !important;
+        color: #1a1a1a !important;
+    }
+    section[data-testid="stSidebar"] {
+        background-color: #1a1a1a !important;
+        color: white !important;
+    }
+    section[data-testid="stSidebar"] * {
+        color: white !important;
+    }
+    div.stButton > button {
+        color: white !important;  /* Ensures white text */
+    }
+    div.stButton > button span {
+        color: white !important;  /* Fix span inside button */
     }
     .stTextInput > div > div > input,
     .stSelectbox > div,
