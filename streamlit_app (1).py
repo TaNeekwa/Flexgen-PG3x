@@ -137,12 +137,16 @@ with col2:
         help="Drop the input form here to auto-fill fields.",
     )
 
-    if uploaded_form:
+   if uploaded_form:
         uploaded_form.seek(0)  # Reset pointer before reading
         try:
             excel_data = pd.ExcelFile(uploaded_form)
-            df_preview = pd.read_excel(excel_data, sheet_name=0,
+            df_preview = pd.read_excel(excel_data, sheet_name=0, skiprows=7, nrows=20)
 
+            with st.expander("📄 Table Preview (Field Autofill View)", expanded=False):
+                st.dataframe(df_preview, use_container_width=True)
+        except Exception as e:
+            st.error(f"⚠️ Could not preview Excel data: {e}")
   
 # === Conditional Inputs ===
 if proposal_type == "EMS Proposal":
