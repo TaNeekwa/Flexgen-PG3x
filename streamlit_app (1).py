@@ -119,6 +119,32 @@ input, select, textarea {
     color: #1a1a1a !important;
 }
 </style>"""
+st.markdown("""
+<style>
+.button-row {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Fixes for button text */
+div.stButton > button {
+    background-color: #111 !important;
+    color: white !important;
+    border-radius: 10px !important;
+    padding: 0.5rem 1.5rem !important;
+    font-weight: 600 !important;
+    border: none !important;
+    text-align: center !important;
+}
+
+/* Improve contrast on hover */
+div.stButton > button:hover {
+    background-color: #333 !important;
+    color: white !important;
+}
+</style>
     # ✅ INSERT THIS IMMEDIATELY HERE, BEFORE ANY UI:
 st.markdown(css_theme, unsafe_allow_html=True)
 # === Logo + Title Section ===
@@ -310,32 +336,7 @@ with st.container():
                         except Exception as e:
                             st.error(f"⚠️ FlexBot error: {e}")
 # === Submission Buttons ===
-st.markdown("""
-<style>
-.button-row {
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-    margin-top: 20px;
-}
 
-/* Fixes for button text */
-div.stButton > button {
-    background-color: #111 !important;
-    color: white !important;
-    border-radius: 10px !important;
-    padding: 0.5rem 1.5rem !important;
-    font-weight: 600 !important;
-    border: none !important;
-    text-align: center !important;
-}
-
-/* Improve contrast on hover */
-div.stButton > button:hover {
-    background-color: #333 !important;
-    color: white !important;
-}
-</style>
 """, unsafe_allow_html=True)
 with st.container():
     st.markdown('<div class="button-row">', unsafe_allow_html=True)
