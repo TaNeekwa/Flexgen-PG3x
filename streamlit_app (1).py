@@ -4,23 +4,6 @@ from PIL import Image
 import os
 import pandas as pd
 
-if uploaded_form:
-    try:
-        # Determine file extension
-        filename = uploaded_form.name
-        ext = os.path.splitext(filename)[1].lower()
-
-        # Choose engine based on file type
-        if ext == ".xls":
-            df_preview = pd.read_excel(uploaded_form, engine="xlrd", nrows=10)
-        else:  # .xlsx or .xlsm
-            df_preview = pd.read_excel(uploaded_form, engine="openpyxl", nrows=10)
-
-        with st.expander("📄 Preview Uploaded Input Form", expanded=False):
-            st.dataframe(df_preview, use_container_width=True)
-    except Exception as e:
-        st.error(f"⚠️ Could not preview file: {e}")
-
 # === Page Settings (MUST be first) ===
 st.set_page_config(page_title="Proposal Generator", layout="wide")
 
