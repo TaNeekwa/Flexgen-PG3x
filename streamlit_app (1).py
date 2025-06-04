@@ -5,51 +5,64 @@ st.set_page_config(page_title="Proposal Generator", layout="wide")
 
 # === Global Style Overrides ===
 st.markdown("""
-    <style>
-    /* Full white background */
-    body, .stApp {
-        background-color: white !important;
-        font-family: 'Century Gothic', sans-serif !important;
-        color: black !important;
-    }
+<style>
+/* === Global App Layout === */
+html, body, .stApp {
+    background-color: white !important;
+    color: black !important;
+    font-family: 'Century Gothic', sans-serif !important;
+}
 
-    h1, h2, h3, h4, p, label, div, span {
-        font-family: 'Century Gothic', sans-serif !important;
-        color: black !important;
-    }
+/* === Global Text Styling === */
+h1, h2, h3, h4, label, p, span, div {
+    font-family: 'Century Gothic', sans-serif !important;
+    color: black !important;
+}
 
-    /* Center logo */
-    img {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        padding-bottom: 10px;
-    }
+/* === Streamlit Dropdown + Input Fix === */
+div[data-baseweb="select"] {
+    background-color: white !important;
+    border: 1px solid black !important;
+    border-radius: 6px !important;
+    padding: 4px !important;
+    box-shadow: none !important;
+}
 
-    /* Inputs and dropdowns */
-    .stTextInput > div > div > input,
-    .stSelectbox > div,
-    .stNumberInput > div > input,
-    .stDateInput > div > input,
-    .stTextArea > div > textarea,
-    .stRadio > div > label,
-    .stCheckbox > div {
-        background-color: white !important;
-        color: grey !important;
-        border: 1px solid black !important;
-        border-radius: 4px !important;
-    }
+div[data-baseweb="select"]:hover {
+    background-color: #f5f5f5 !important;
+}
 
-    /* Hover / active state for dropdowns */
-    .stSelectbox:hover, .stTextInput:hover, .stNumberInput:hover {
-        background-color: #f2f2f2 !important;
-    }
+div[data-baseweb="select"]:focus-within {
+    border: 1px solid #555 !important;
+}
 
-    /* Expander title font */
-    .st-expander > summary {
-        font-family: 'Century Gothic', sans-serif !important;
-    }
-    </style>
+/* === Text + Number Input Cleanup === */
+input, textarea {
+    background-color: white !important;
+    color: black !important;
+    border: 1px solid black !important;
+    border-radius: 6px !important;
+    padding: 6px !important;
+}
+
+input:focus, textarea:focus {
+    background-color: #f5f5f5 !important;
+    outline: none !important;
+    border: 1px solid #333 !important;
+}
+
+/* === Fix caret spacing */
+.stSelectbox [data-testid="stSelectbox"] > div {
+    padding-right: 16px !important;
+}
+
+/* === Logo image formatting === */
+img {
+    display: block;
+    margin: 0 auto;
+    padding-bottom: 10px;
+}
+</style>
 """, unsafe_allow_html=True)
 
 # === Logo + Title Section ===
