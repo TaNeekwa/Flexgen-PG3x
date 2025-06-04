@@ -114,7 +114,7 @@ with top_col1:
 
 with top_col2:
   st.markdown("""
-<div style="width: 100vw; display: flex; flex-direction: column; align-items: center; justify-content: center; padding-top: 10px;">
+<div style="width: 100vw; display: flex; flex-direction: column; align-items: center; justify-content: center; padding-top: 0px;">
     <img src="https://raw.githubusercontent.com/TaNeekwa/Flexgen-PG3x/main/FlexGen_Primary_Logo_-_Gradient.svg.png" 
          alt="FlexGen Logo" width="300" style="margin-bottom: 10px;" />
     <h1 style="font-size: 42px; text-align: center; margin-top: 0;">
