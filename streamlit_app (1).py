@@ -11,20 +11,18 @@ except ImportError:
 # === Page Settings ===
 st.set_page_config(page_title="Proposal Generator", layout="wide")
 
-# === Setup session state for theme toggle ===
+# === Session State for Dark Mode ===
 if "dark_mode" not in st.session_state:
     st.session_state.dark_mode = False
 
-# === Sidebar Layout: Theme Toggle + Summary ===
+# === Sidebar: Theme Toggle ===
 with st.sidebar:
     st.markdown("### 🌓 Light / Dark Mode")
+    toggle_val = st.toggle("🌞 Light / 🌙 Dark", value=st.session_state.dark_mode)
 
-    # Flip and rerun if toggled
-    new_toggle = st.toggle("🌞 Light / 🌙 Dark", value=st.session_state.dark_mode, key="theme_toggle")
-
-    if new_toggle != st.session_state.dark_mode:
-        st.session_state.dark_mode = new_toggle
-        st.experimental_rerun()  # 🔄 Force reload with new theme
+    if toggle_val != st.session_state.dark_mode:
+        st.session_state.dark_mode = toggle_val
+        st.experimental_rerun()
 
 # === Apply theme after rerun ===
 dark_mode = st.session_state.dark_mode
