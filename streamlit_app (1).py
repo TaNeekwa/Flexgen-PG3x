@@ -63,25 +63,21 @@ if dark_mode:
     </style>
     """
 else:
-    css_theme = """
-    <style>
+   css_theme = """<style>
     body, .stApp {
-        background-color: white !important;
+        background-color: #ffffff !important;
+        color: #1a1a1a !important;
         font-family: 'Century Gothic', sans-serif !important;
-        color: black !important;
     }
-
     h1, h2, h3, h4, p, label, div, span {
-        color: black !important;
+        color: #1a1a1a !important;
     }
-
     img {
         display: block;
         margin-left: auto;
         margin-right: auto;
         padding-bottom: 10px;
     }
-
     .stTextInput > div > div > input,
     .stSelectbox > div,
     .stNumberInput > div > input,
@@ -89,33 +85,48 @@ else:
     .stTextArea > div > textarea,
     .stRadio > div > label,
     .stCheckbox > div {
-        background-color: white !important;
-        color: black !important;
-        border: 1px solid black !important;
-        border-radius: 4px !important;
+        background-color: #ffffff !important;
+        color: #1a1a1a !important;
+        border: 1px solid #d9d9d9 !important;
+        border-radius: 6px !important;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.05) !important;
     }
-
     .css-1wa3eu0, .css-1okebmr, .css-1g6gooi, .css-14el2xx, .css-qc6sy-singleValue {
-        color: black !important;
+        color: #1a1a1a !important;
     }
-
     div[data-baseweb="select"] * {
-        color: black !important;
+        color: #1a1a1a !important;
     }
-
     input, select, textarea {
-        color: black !important;
+        color: #1a1a1a !important;
     }
-
     .stSelectbox:hover, .stTextInput:hover, .stNumberInput:hover {
-        background-color: #f2f2f2 !important;
+        background-color: #f7f7f7 !important;
+    }
+    .st-expander > summary {
+        color: #1a1a1a !important;
     }
 
-    .st-expander > summary {
-        color: black !important;
+    /* === Sidebar overrides === */
+    section[data-testid="stSidebar"] {
+        background-color: #111111 !important;
+        color: white !important;
     }
-    </style>
-    """
+    section[data-testid="stSidebar"] div[data-baseweb="select"] * {
+        color: white !important;
+    }
+    section[data-testid="stSidebar"] .stSelectbox div,
+    section[data-testid="stSidebar"] .stRadio label,
+    section[data-testid="stSidebar"] label,
+    section[data-testid="stSidebar"] span {
+        color: white !important;
+    }
+    section[data-testid="stSidebar"] div[data-baseweb="popover"] {
+        background-color: #222 !important;
+        color: white !important;
+        border: 1px solid #444 !important;
+    }
+    </style>"""
 
 # === Logo + Title Section ===
 st.markdown("""
