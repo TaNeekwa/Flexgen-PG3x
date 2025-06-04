@@ -1,64 +1,69 @@
 import streamlit as st
 
-# Page settings — MUST be first!
+# Page config (MUST be first)
 st.set_page_config(page_title="Proposal Generator", layout="wide")
 
-# === Global Style Overrides ===
-st.markdown(
-    """
+# Custom styling
+st.markdown("""
     <style>
-    html, body, [class*="css"] {
-        background-color: white !important;
-        color: black !important;
-        font-family: 'Century Gothic', sans-serif !important;
-    }
-    .stApp {
-        background-color: white !important;
-    }
-    h1, h2, h3, h4, h5, h6, p, label, div, input, select, textarea {
-        color: black !important;
-        font-family: 'Century Gothic', sans-serif !important;
-    }
-    .stMarkdown, .stTextInput, .stSelectbox, .stDateInput, .stNumberInput, .stRadio {
-        font-family: 'Century Gothic', sans-serif !important;
-        color: black !important;
-    }
+        html, body, [class*="css"] {
+            background-color: #ffffff !important;
+            color: #000000 !important;
+            font-family: 'Century Gothic', sans-serif !important;
+        }
+
+        .stTextInput>div>div>input,
+        .stNumberInput>div>div>input,
+        .stSelectbox>div>div,
+        .stDateInput>div>input,
+        .stTextArea>div>textarea {
+            background-color: #ffffff !important;
+            color: #000000 !important;
+            border: 1px solid black !important;
+            border-radius: 6px;
+            padding: 8px;
+        }
+
+        .stSelectbox>div:hover,
+        .stTextInput>div:hover,
+        .stNumberInput>div:hover,
+        .stDateInput>div:hover {
+            background-color: #f3f3f3 !important;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Century Gothic', sans-serif !important;
+            color: #000000 !important;
+        }
     </style>
-    """,
-    unsafe_allow_html=True
-)
+""", unsafe_allow_html=True)
 
-
-# === Logo + Title Section (Single clean block) ===
-st.markdown(
-    """
+# Logo + Title section
+st.markdown("""
     <div style="text-align: center;">
-        <img src="https://raw.githubusercontent.com/TaNeekwa/Flexgen-PG3x/main/FlexGen_Primary_Logo_-_Gradient.svg.png" width="200"/>
-        <h1 style="font-size: 40px; margin-top: 10px;">Proposal Generator - FlexGen Edition ⚡</h1>
+        <img src="https://raw.githubusercontent.com/TaNeekwa/Flexgen-PG3x/main/FlexGen_Primary_Logo_-_Gradient.svg.png" width="320"/>
+        <h1 style="margin-top: 10px;">Proposal Generator - FlexGen Edition ⚡</h1>
         <p style="font-size: 18px;">Enter project details below to generate your custom proposal.</p>
     </div>
-    """,
-    unsafe_allow_html=True
-)
+""", unsafe_allow_html=True)
 
-# === Proposal Type Selector ===
+# Proposal Type
 proposal_type = st.selectbox("🧩 Proposal Type", ["EMS Proposal", "Full Product Proposal"])
 st.markdown(f"You selected: **{proposal_type}**")
 
-# === Conditional Section Based on Proposal Type ===
+# EMS / Full Product Inputs
 if proposal_type == "EMS Proposal":
     st.subheader("🔌 EMS Proposal Configuration")
     ems_comm_protocol = st.selectbox("EMS Communication Protocol", ["Modbus TCP", "DNP3", "IEC 61850", "Custom"])
     ems_rack_type = st.selectbox("EMS Rack Type", ["Standard Rack", "Outdoor Cabinet", "Custom Integration"])
     ems_networking = st.selectbox("Networking Requirements", ["Basic", "Redundant", "Isolated Secure VLAN"])
-
 elif proposal_type == "Full Product Proposal":
     st.subheader("🏗️ Full Product Configuration")
     enclosure_type = st.selectbox("Enclosure Type", ["ISO Container", "Walk-in Enclosure", "Custom Built"])
     hvac_option = st.selectbox("HVAC Type", ["Split System", "Packaged Unit", "Free Cooling", "None"])
     inverter_mounting = st.selectbox("Inverter Mounting", ["Skid Mounted", "Pad Mounted", "Integrated"])
 
-# === Project Info ===
+# Project Info
 with st.expander("📁 Project Information", expanded=True):
     proposal_id = st.text_input("Proposal ID")
     customer_name = st.text_input("Customer Name")
@@ -67,14 +72,12 @@ with st.expander("📁 Project Information", expanded=True):
 
     if country == "USA":
         state = st.selectbox("State", [
-            "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut",
-            "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa",
-            "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan",
-            "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire",
-            "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio",
-            "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota",
-            "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia",
-            "Wisconsin", "Wyoming"
+            "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida",
+            "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine",
+            "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska",
+            "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio",
+            "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas",
+            "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"
         ])
     else:
         state = None
@@ -82,7 +85,7 @@ with st.expander("📁 Project Information", expanded=True):
     market = st.selectbox("Market", ["ERCOT", "CAISO", "PJM", "UK Grid", "European Grid"])
     cod = st.date_input("Expected COD (Commercial Operation Date)")
 
-# === System Configuration ===
+# System Configuration
 with st.expander("🔋 System Configuration", expanded=True):
     battery_brand = st.selectbox("Battery Brand", ["CATL", "BYD", "Samsung SDI", "Cornex", "Other"])
     battery_size = st.number_input("Battery Size per Unit (MWh)", min_value=0.0, step=0.1)
@@ -92,7 +95,7 @@ with st.expander("🔋 System Configuration", expanded=True):
     pcs_size = st.number_input("PCS Size per Unit (MW)", min_value=0.0, step=0.1)
     pcs_qty = st.number_input("Number of PCS Blocks", min_value=0, step=1)
 
-# === Scope of Services ===
+# Scope of Services
 with st.expander("🛠️ Scope of Services", expanded=True):
     field_commissioning = st.checkbox("Field Commissioning Services")
     grid_testing = st.checkbox("Grid Qualification Testing")
@@ -104,11 +107,12 @@ with st.expander("🛠️ Scope of Services", expanded=True):
     custom_scope = st.checkbox("Custom Scope Needed?")
     custom_scope_details = st.text_area("If custom, please describe the scope", disabled=not custom_scope)
 
-# === Currency Selection ===
+# Currency & Region
 with st.expander("💱 Currency & Region", expanded=True):
     currency = st.radio("Currency for Proposal", ["USD", "EUR", "GBP", "Custom"])
     custom_fx = st.number_input("Custom FX Rate (1 USD = ?)", min_value=0.0, step=0.01, disabled=(currency != "Custom"))
 
-# === Submission ===
+# Submission
 if st.button("🚀 Generate Proposal"):
     st.success("Proposal generation initiated!")
+    # PDF/Docx export logic will go here
