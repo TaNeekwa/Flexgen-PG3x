@@ -188,6 +188,8 @@ with col2:
         currency = st.radio("Currency for Proposal", ["USD", "EUR", "GBP", "Custom"])
         custom_fx = st.number_input("Custom FX Rate (1 USD = ?)", min_value=0.0, step=0.01, disabled=(currency != "Custom"))
 
+from PIL import Image
+
 # === Sidebar Summary ===
 with st.sidebar:
     st.markdown("### 🧾 Proposal Summary")
@@ -199,21 +201,22 @@ with st.sidebar:
     st.write(f"**Battery:** {battery_qty}x{battery_size} MWh ({battery_brand})")
     st.write(f"**PCS:** {pcs_qty}x{pcs_size} MW ({pcs_brand})")
     st.write(f"**Currency:** {currency}")
-st.sidebar.markdown("""
-<br><br><hr>
-<div style="text-align: center; margin-top: 30px;">
-    <!-- First image -->
-    <img src="https://github.com/TaNeekwa/Flexgen-PG3x/blob/main/Pictures/Screenshot%202025-06-03%20224827.png?raw=true" 
-         width="140" style="margin-bottom: 10px;" alt="Your First Image" />
 
-    <!-- Second image (FlexGen logo or another) -->
-    <img src="https://raw.githubusercontent.com/TaNeekwa/Flexgen-PG3x/refs/heads/main/Pictures/Screenshot%202025-06-03%20224337.png" 
-         width="150" style="margin-top: 10px;" alt="FlexGen Logo" />
+    # === Footer images ===
+    st.markdown("<hr>", unsafe_allow_html=True)
 
-    <p style="font-size: 12px; color: gray;">Powered by FlexGen Proposal Generator</p>
-</div>
-""", unsafe_allow_html=True)
+    # First image from web
+    st.image("https://github.com/TaNeekwa/Flexgen-PG3x/blob/main/Pictures/Screenshot%202025-06-03%20224827.png?raw=true",
+             caption="Quote of the Day", width=140)
 
+    # Second image from upload
+    try:
+        uploaded_logo = Image.open("cc7a2731-9c37-4578-82f3-2c0a22a8c554.png")
+        st.image(uploaded_logo, caption="FlexGen Logo", width=150)
+    except:
+        st.warning("Local logo image not found.")
+
+    st.markdown('<p style="font-size: 12px; color: gray; text-align: center;">Powered by FlexGen Proposal Generator</p>', unsafe_allow_html=True)
 
 # === Submission Buttons ===
 col1, col2 = st.columns([1, 1])
