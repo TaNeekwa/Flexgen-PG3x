@@ -94,6 +94,8 @@ else:
         color: #1a1a1a !important;
     }
     </style>"""
+    # ✅ INSERT THIS IMMEDIATELY HERE, BEFORE ANY UI:
+st.markdown(css_theme, unsafe_allow_html=True)
 # === Logo + Title Section ===
 st.markdown("""
 <div style="text-align: center; padding-top: 10px;">
