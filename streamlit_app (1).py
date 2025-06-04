@@ -2,7 +2,6 @@ import streamlit as st
 from PIL import Image
 import os
 import pandas as pd
-
 try:
     import openpyxl  # noqa: F401 - used implicitly by pandas
 except ImportError:  # pragma: no cover - just show a friendly error
@@ -131,7 +130,6 @@ with col2:
         type=["xlsx", "xlsm", "xls"],
         help="Drop the input form here to auto-fill fields."
     )
-
     if uploaded_form:
           if openpyxl is None:
             st.error(
