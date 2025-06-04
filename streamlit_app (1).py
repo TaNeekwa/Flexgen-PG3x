@@ -200,36 +200,34 @@ with st.sidebar:
     st.write(f"**PCS:** {pcs_qty}x{pcs_size} MW ({pcs_brand})")
     st.write(f"**Currency:** {currency}")
 
-# === Footer images ===
+ # === Divider ===
     st.markdown("<hr>", unsafe_allow_html=True)
 
-    # First image: Quote of the Day
+    # === First Image: Quote of the Day ===
     st.markdown(
         """
-        <div style="text-align: center;">
+        <div style="text-align: center; margin-top: 20px; margin-bottom: 30px;">
             <img src="https://github.com/TaNeekwa/Flexgen-PG3x/blob/main/Pictures/Screenshot%202025-06-03%20224827.png?raw=true" 
                  width="140">
-            <p style="font-size: 12px; color: gray;">Quote of the Day</p>
+            <p style="font-size: 12px; color: gray; margin-top: 6px;">Quote of the Day</p>
         </div>
         """,
         unsafe_allow_html=True
     )
 
-    # Second image: Developed by FlexGen
+    # === Spacer to push bottom content ===
+    st.markdown("<div style='flex-grow: 1; height: 100px;'></div>", unsafe_allow_html=True)
+
+    # === Second Image + Footer ===
     st.markdown(
         """
-        <div style="text-align: center;">
+        <div style="text-align: center; margin-top: auto;">
             <img src="https://github.com/TaNeekwa/Flexgen-PG3x/blob/main/Pictures/Screenshot%202025-06-03%20224337.png?raw=true" 
                  width="140">
-            <p style="font-size: 12px; color: gray;">Developed by FlexGen</p>
+            <p style="font-size: 12px; color: gray; margin-top: 6px;">Developed by FlexGen</p>
+            <p style="font-size: 12px; color: gray;">Powered by FlexGen Proposal Generator</p>
         </div>
         """,
-        unsafe_allow_html=True
-    )
-
-    # Footer text
-    st.markdown(
-        '<p style="font-size: 12px; color: gray; text-align: center;">Powered by FlexGen Proposal Generator</p>',
         unsafe_allow_html=True
     )
 # === Submission Buttons ===
