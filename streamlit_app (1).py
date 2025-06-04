@@ -28,7 +28,7 @@ with st.sidebar:
 dark_mode = st.session_state.dark_mode
 
 # === Divider ===
-st.markdown("<hr>", unsafe_allow_html=True)
+st.markdown("<hr style='border: 1px solid white; margin-top: 20px; margin-bottom: 20px;'>", unsafe_allow_html=True)
 
 # === Apply Conditional Styling After Toggle ===
 
