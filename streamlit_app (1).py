@@ -88,8 +88,6 @@ else:
     }
     </style>"""
 
-
-
     # ✅ INSERT THIS IMMEDIATELY HERE, BEFORE ANY UI:
 st.markdown(css_theme, unsafe_allow_html=True)
 # === Logo + Title Section ===
@@ -122,9 +120,10 @@ elif proposal_type == "Full Product Proposal":
 
 # === Project & System Info ===
 st.markdown("<hr>", unsafe_allow_html=True)
-st.markdown("### 📁 <b>Project Information</b>", unsafe_allow_html=True)
 col1, col2 = st.columns(2)
+
 with col1:
+    st.markdown("### 📁 <b>Project Information</b>", unsafe_allow_html=True)
     proposal_id = st.text_input("Proposal ID")
     customer_name = st.text_input("Customer Name")
     project_name = st.text_input("Project Name")
@@ -151,6 +150,7 @@ with col2:
     pcs_brand = st.selectbox("PCS Brand", ["EPC Power", "Sungrow", "Sineng", "Power Electronics", "Other"])
     pcs_size = st.number_input("PCS Size per Unit (MW)", min_value=0.0, step=0.1)
     pcs_qty = st.number_input("Number of PCS Blocks", min_value=0, step=1)
+
 
 # === Divider ===
 st.markdown("<hr style='margin-top: 25px; margin-bottom: 10px;'>", unsafe_allow_html=True)
