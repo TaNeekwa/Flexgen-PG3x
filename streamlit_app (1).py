@@ -1,52 +1,41 @@
 import streamlit as st
 
-# Page config (MUST be first)
+# Page settings — MUST be first!
 st.set_page_config(page_title="Proposal Generator", layout="wide")
 
-# Custom styling
-st.markdown("""
+# === Global Style Overrides ===
+st.markdown(
+    """
     <style>
-        html, body, [class*="css"] {
-            background-color: #ffffff !important;
-            color: #000000 !important;
-            font-family: 'Century Gothic', sans-serif !important;
-        }
-
-        .stTextInput>div>div>input,
-        .stNumberInput>div>div>input,
-        .stSelectbox>div>div,
-        .stDateInput>div>input,
-        .stTextArea>div>textarea {
-            background-color: #ffffff !important;
-            color: #000000 !important;
-            border: 1px solid black !important;
-            border-radius: 6px;
-            padding: 8px;
-        }
-
-        .stSelectbox>div:hover,
-        .stTextInput>div:hover,
-        .stNumberInput>div:hover,
-        .stDateInput>div:hover {
-            background-color: #f3f3f3 !important;
-        }
-
-        h1, h2, h3, h4, h5 {
-            font-family: 'Century Gothic', sans-serif !important;
-            color: #000000 !important;
-        }
+    body {
+        background-color: white !important;
+        color: black !important;
+        font-family: 'Century Gothic', sans-serif !important;
+    }
+    .reportview-container .markdown-text-container, .sidebar .sidebar-content {
+        color: black !important;
+        font-family: 'Century Gothic', sans-serif !important;
+    }
+    h1, h2, h3, h4, p, label, input, select, textarea {
+        font-family: 'Century Gothic', sans-serif !important;
+        color: #000000 !important;
+    }
     </style>
-""", unsafe_allow_html=True)
+    """,
+    unsafe_allow_html=True
+)
 
-# Logo + Title section
-st.markdown("""
+# === Logo + Title Section (Single clean block) ===
+st.markdown(
+    """
     <div style="text-align: center;">
-        <img src="https://raw.githubusercontent.com/TaNeekwa/Flexgen-PG3x/main/FlexGen_Primary_Logo_-_Gradient.svg.png" width="320"/>
-        <h1 style="margin-top: 10px;">Proposal Generator - FlexGen Edition ⚡</h1>
+        <img src="https://raw.githubusercontent.com/TaNeekwa/Flexgen-PG3x/main/FlexGen_Primary_Logo_-_Gradient.svg.png" width="200"/>
+        <h1 style="font-size: 40px; margin-top: 10px;">Proposal Generator - FlexGen Edition ⚡</h1>
         <p style="font-size: 18px;">Enter project details below to generate your custom proposal.</p>
     </div>
-""", unsafe_allow_html=True)
-
+    """,
+    unsafe_allow_html=True
+)
 # Proposal Type
 proposal_type = st.selectbox("🧩 Proposal Type", ["EMS Proposal", "Full Product Proposal"])
 st.markdown(f"You selected: **{proposal_type}**")
