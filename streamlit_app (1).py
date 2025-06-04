@@ -53,49 +53,70 @@ if dark_mode:
     </style>"""
 else:
     css_theme = """<style>
-    body, .stApp {
-        background-color: #ffffff !important;
-        color: #1a1a1a !important;
-        font-family: 'Century Gothic', sans-serif !important;
-    }
-    h1, h2, h3, h4, p, label, div, span {
-        color: #1a1a1a !important;
-    }
-    img {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        padding-bottom: 10px;
-    }
-    .stTextInput > div > div > input,
-    .stSelectbox > div,
-    .stNumberInput > div > input,
-    .stDateInput > div > input,
-    .stTextArea > div > textarea,
-    .stRadio > div > label,
-    .stCheckbox > div {
-        background-color: #ffffff !important;
-        color: #1a1a1a !important;
-        border: 1px solid #d9d9d9 !important;
-        border-radius: 6px !important;
-        box-shadow: 0 1px 2px rgba(0,0,0,0.05) !important;
-    }
-    .css-1wa3eu0, .css-1okebmr, .css-1g6gooi, .css-14el2xx, .css-qc6sy-singleValue {
-        color: #1a1a1a !important;
-    }
-    div[data-baseweb="select"] * {
-        color: #1a1a1a !important;
-    }
-    input, select, textarea {
-        color: #1a1a1a !important;
-    }
-    .stSelectbox:hover, .stTextInput:hover, .stNumberInput:hover {
-        background-color: #f7f7f7 !important;
-    }
-    .st-expander > summary {
-        color: #1a1a1a !important;
-    }
-    </style>"""
+body, .stApp {
+    background-color: #ffffff !important;
+    color: #1a1a1a !important;
+    font-family: 'Century Gothic', sans-serif !important;
+}
+
+/* Global heading and label text */
+h1, h2, h3, h4, p, label, div, span {
+    color: #1a1a1a !important;
+}
+
+/* Sidebar override */
+section[data-testid="stSidebar"] {
+    background-color: #1a1a1a !important;
+    color: white !important;
+}
+section[data-testid="stSidebar"] * {
+    color: white !important;
+}
+
+/* Logo */
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 10px;
+}
+
+/* Form Inputs */
+.stTextInput > div > div > input,
+.stSelectbox > div,
+.stNumberInput > div > input,
+.stDateInput > div > input,
+.stTextArea > div > textarea,
+.stRadio > div > label,
+.stCheckbox > div {
+    background-color: #ffffff !important;
+    color: white !important;  /* ✅ text inside inputs */
+    border: 1px solid #d9d9d9 !important;
+    border-radius: 6px !important;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05) !important;
+}
+
+/* Dropdown & select items */
+.css-1wa3eu0, .css-1okebmr, .css-1g6gooi, .css-14el2xx, .css-qc6sy-singleValue {
+    color: white !important;  /* ✅ selected value text */
+}
+div[data-baseweb="select"] * {
+    color: white !important;  /* ✅ all options in dropdown */
+}
+input, select, textarea {
+    color: white !important;
+}
+
+/* Hover styling */
+.stSelectbox:hover, .stTextInput:hover, .stNumberInput:hover {
+    background-color: #f7f7f7 !important;
+}
+
+/* Expander text */
+.st-expander > summary {
+    color: #1a1a1a !important;
+}
+</style>"""
     # ✅ INSERT THIS IMMEDIATELY HERE, BEFORE ANY UI:
 st.markdown(css_theme, unsafe_allow_html=True)
 # === Logo + Title Section ===
