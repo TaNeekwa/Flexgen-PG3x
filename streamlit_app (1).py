@@ -11,8 +11,11 @@ except ImportError:
 # === Page Settings (MUST be first) ===
 st.set_page_config(page_title="Proposal Generator", layout="wide")
 
-# === Toggle First So It's Usable in Styling ===
-dark_mode = st.toggle("🌞 Light / 🌙 Dark")
+ # === Sidebar Layout: Theme Toggle + Summary + Footer ===
+with st.sidebar:
+    # === 🌞🌙 Light / Dark Mode Toggle ===
+    st.markdown("### 🌓 Light / Dark Mode")
+    dark_mode = st.toggle("🌞 Light / 🌙 Dark", key="theme_toggle")
 
 # === Apply Conditional Styling After Toggle ===
 if dark_mode:
