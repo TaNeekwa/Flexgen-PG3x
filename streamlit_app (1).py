@@ -1,3 +1,6 @@
+# === Page Settings (MUST be first) ===
+st.set_page_config(page_title="Proposal Generator", layout="wide")
+
 else:
     css_theme = """<style>
     body, .stApp {
