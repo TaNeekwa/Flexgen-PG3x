@@ -125,6 +125,16 @@ with col2:
         help="Drop the input form here to auto-fill fields."
     )
 
+    if uploaded_form:
+        import pandas as pd
+        try:
+            df_preview = pd.read_excel(uploaded_form, nrows=10)  # Only show top 10 rows
+            with st.expander("📄 Preview Uploaded Input Form", expanded=False):
+                st.dataframe(df_preview, use_container_width=True)
+        except Exception as e:
+            st.error(f"Could not preview file: {e}")
+    )
+
 # === Conditional Inputs ===
 if proposal_type == "EMS Proposal":
     st.markdown("### 🔌 EMS Proposal Configuration", unsafe_allow_html=True)
