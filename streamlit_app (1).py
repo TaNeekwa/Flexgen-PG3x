@@ -104,16 +104,14 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # === Proposal Type + Input Form Upload ===
-col1, col2 = st.columns([2, 3])
+col1, spacer, col2 = st.columns([2, 0.3, 3])  # Added spacer between the two sections
 
 with col1:
     proposal_type = st.selectbox("🧩 Proposal Type", ["EMS Proposal", "Full Product Proposal"])
     st.markdown(f"You selected: **{proposal_type}**")
 
 with col2:
-    st.markdown("<div style='margin-left: 20px;'>", unsafe_allow_html=True)
     uploaded_form = st.file_uploader("📤 Upload Input Form (Excel)", type=["xlsx"], help="Drop the input form here to auto-fill fields.")
-    st.markdown("</div>", unsafe_allow_html=True)
 
 # === Conditional Inputs ===
 if proposal_type == "EMS Proposal":
