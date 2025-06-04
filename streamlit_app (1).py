@@ -196,51 +196,7 @@ with st.expander("BD Details", expanded=True):
 # === Divider ===
 st.markdown("<hr style='margin-top: 25px; margin-bottom: 10px;'>", unsafe_allow_html=True)
 
-# === FlexBot Assistant Floating Box ===
-st.markdown("""
-<div class="floating-box">
-    <h4>🤖 FlexBot</h4>
-""", unsafe_allow_html=True)
 
-user_input = st.text_area("Ask me anything...", key="floating_bot_input")
-
-if st.button("Send", key="floating_bot_send"):
-    with st.spinner("FlexBot is thinking..."):
-        try:
-            openai.api_key = st.secrets["OPENAI_API_KEY"]
-            response = openai.ChatCompletion.create(
-                model="gpt-4",
-                messages=[
-                    {"role": "system", "content": (
-                        "You are FlexBot, a helpful AI assistant embedded in a proposal generator. "
-                        "Answer clearly and concisely about PCS, battery config, proposal details, and calculations."
-                    )},
-                    {"role": "user", "content": user_input}
-                ]
-            )
-            st.markdown(f"**Response:** {response.choices[0].message.content.strip()}")
-        except Exception as e:
-            st.error(f"⚠️ FlexBot error: {e}")
-
-st.markdown("</div>", unsafe_allow_html=True)
-
-# Add CSS last
-st.markdown("""
-<style>
-.floating-box {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background-color: #fefefe;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 12px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.2);
-    width: 300px;
-    z-index: 9999;
-}
-</style>
-""", unsafe_allow_html=True)
 # === Scope + Currency ===
 col1, col2 = st.columns(2)
 with col1:
