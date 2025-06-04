@@ -1,13 +1,12 @@
 import pandas as pd
 import os
 import streamlit as st
+import base64  # ✅ Moved here to fix error
 
 try:
     import openpyxl  # noqa: F401 - used implicitly by pandas
-except ImportError:  # pragma: no cover - just show a friendly error
+except ImportError:
     openpyxl = None
-    import base64
-
 def show_excel_as_downloadable_preview(uploaded_file):
     if uploaded_file is not None:
         # Read and encode Excel binary content
