@@ -1,6 +1,26 @@
 import streamlit as st
 import openai 
 from PIL import Image
+import os
+import pandas as pd
+
+if uploaded_form:
+    try:
+        # Determine file extension
+        filename = uploaded_form.name
+        ext = os.path.splitext(filename)[1].lower()
+
+        # Choose engine based on file type
+        if ext == ".xls":
+            df_preview = pd.read_excel(uploaded_form, engine="xlrd", nrows=10)
+        else:  # .xlsx or .xlsm
+            df_preview = pd.read_excel(uploaded_form, engine="openpyxl", nrows=10)
+
+        with st.expander("📄 Preview Uploaded Input Form", expanded=False):
+            st.dataframe(df_preview, use_container_width=True)
+    except Exception as e:
+        st.error(f"⚠️ Could not preview file: {e}")
+
 # === Page Settings (MUST be first) ===
 st.set_page_config(page_title="Proposal Generator", layout="wide")
 
@@ -119,12 +139,7 @@ with col1:
     ])
 
 with col2:
-    uploaded_form = st.file_uploader(
-        "📤 Upload Input Form (Excel)",
-        type=["xlsx"],
-        help="Drop the input form here to auto-fill fields."
-    )
-
+    
     if uploaded_form:
         import pandas as pd
         try:
@@ -133,7 +148,7 @@ with col2:
                 st.dataframe(df_preview, use_container_width=True)
         except Exception as e:
             st.error(f"Could not preview file: {e}")
-
+  )
 # === Conditional Inputs ===
 if proposal_type == "EMS Proposal":
     st.markdown("### 🔌 EMS Proposal Configuration", unsafe_allow_html=True)
