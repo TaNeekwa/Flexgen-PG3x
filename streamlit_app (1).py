@@ -26,7 +26,7 @@ if not st.session_state.authenticated:
         col1, col2, col3 = st.columns([1, 2, 1])
         with col2:
             st.markdown("""
-                <div style='background-color: #111; padding: 18px 20px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.4);'>
+                <div style='background-color: #111; padding: 12px 18px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.4);'>
                     <h3 style='color: white; text-align: center; margin-bottom: 20px;'>🔐 Login</h3>
             """, unsafe_allow_html=True)
 
