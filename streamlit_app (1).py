@@ -3,10 +3,14 @@ import pandas as pd
 import os
 import base64
 from Login.Username.Password.LoginInfo import USER_CREDENTIALS
+
 try:
     import openpyxl
 except ImportError:
     openpyxl = None
+
+# === Page Settings ===
+st.set_page_config(page_title="Proposal Generator", layout="wide")
 
 # === LOGIN LOGIC WITH STYLING ===
 if "authenticated" not in st.session_state:
@@ -22,10 +26,8 @@ if not st.session_state.authenticated:
 
     # Login card wrapper
     with st.container():
-        # Card layout using columns to center
         col1, col2, col3 = st.columns([1, 2, 1])
         with col2:
-            # Login box (reduced height)
             st.markdown("""
                 <div style='display: flex; justify-content: center;'>
                     <div style='background-color: #111; padding: 6px 12px; border-radius: 10px; width: 100%; max-width: 320px; box-shadow: 0 3px 10px rgba(0,0,0,0.25);'>
@@ -33,10 +35,10 @@ if not st.session_state.authenticated:
                     </div>
                 </div>
             """, unsafe_allow_html=True)
-            # 👉 Spacer to push the inputs down slightly from the login box
-            st.markdown("<div style='height: 35px;'></div>", unsafe_allow_html=True)
 
-            # Inputs
+            # Add spacing below login title
+            st.markdown("<div style='height: 25px;'></div>", unsafe_allow_html=True)
+
             username = st.text_input("Username", placeholder="Enter username", label_visibility="collapsed", key="login_user_input")
             password = st.text_input("Password", type="password", placeholder="Enter password", label_visibility="collapsed", key="login_pass_input")
 
@@ -49,16 +51,14 @@ if not st.session_state.authenticated:
                 else:
                     st.error("Invalid username or password.")
 
-            # Optional close tag (not really needed in Streamlit HTML blocks, but fine to leave)
             st.markdown("</div>", unsafe_allow_html=True)
 
     st.stop()
 
-# === Session State for Dark Mode ===
+# === Sidebar: Theme Toggle ===
 if "dark_mode" not in st.session_state:
     st.session_state.dark_mode = False
 
-# === Sidebar: Theme Toggle ===
 with st.sidebar:
     st.markdown("### 🌓 Light / Dark Mode")
     toggle_val = st.toggle("🌞 Light / 🌙 Dark", value=st.session_state.dark_mode)
@@ -67,18 +67,15 @@ with st.sidebar:
         st.session_state.dark_mode = toggle_val
         st.experimental_rerun()
 
-    # ✅ Divider inside the sidebar
     st.markdown("<hr style='border: 1px solid white; margin-top: 20px; margin-bottom: 20px;'>", unsafe_allow_html=True)
 
-# === Apply theme after rerun ===
 dark_mode = st.session_state.dark_mode
 
-# === Divider ===
+# === Divider Styling (used later) ===
 divider_color = "#fff" if dark_mode else "#000"
 st.markdown(f"<hr style='border: 1px solid {divider_color}; margin-top: 20px; margin-bottom: 20px;'>", unsafe_allow_html=True)
 
-# === Apply Conditional Styling After Toggle ===
-
+# === THEME STYLING ===
 if dark_mode:
     css_theme = """<style>
     body, .stApp {
@@ -138,7 +135,6 @@ else:
     section[data-testid="stSidebar"] * {
         color: white !important;
     }
-    /* ✅ Light mode fix for button text */
     div.stButton > button {
         background-color: #111 !important;
         color: white !important;
@@ -178,41 +174,42 @@ else:
         color: #1a1a1a !important;
     }
     </style>"""
-# ✅ Apply theme CSS
+
 st.markdown(css_theme, unsafe_allow_html=True)
-  # ✅ INSERT THIS IMMEDIATELY HERE, BEFORE ANY UI:
-# === Logo + Title Section ===
-st.markdown("""
-<div style="text-align: center; padding-top: 10px;">
-    <img src="https://raw.githubusercontent.com/TaNeekwa/Flexgen-PG3x/main/FlexGen_Primary_Logo_-_Gradient.svg.png" 
-         alt="FlexGen Logo" width="300" />
-    <h1 style="font-size: 42px; margin-top: 20px;">
-        Proposal Generator - FlexGen Edition 
-    </h1>
-    <p style="font-size: 18px;">Enter project details below to generate your custom proposal.</p>
-</div>
-""", unsafe_allow_html=True)
-# ✅ Add spacing between title and form section
-st.markdown("<hr style='border: 3px solid black; margin-top: 20px; margin-bottom: 20px;'>", unsafe_allow_html=True)
 
-# === Proposal Type + Input Form Upload ===
-col1, spacer, col2 = st.columns([2, 0.4, 3])  # Adjusted layout
+# === MAIN TITLE (only after login) ===
+if st.session_state.authenticated:
+    st.markdown("""
+    <div style="text-align: center; padding-top: 10px;">
+        <img src="https://raw.githubusercontent.com/TaNeekwa/Flexgen-PG3x/main/FlexGen_Primary_Logo_-_Gradient.svg.png" 
+             alt="FlexGen Logo" width="300" />
+        <h1 style="font-size: 42px; margin-top: 20px;">
+            Proposal Generator - FlexGen Edition 
+        </h1>
+        <p style="font-size: 18px;">Enter project details below to generate your custom proposal.</p>
+    </div>
+    """, unsafe_allow_html=True)
 
-with col1:
-    proposal_type = st.selectbox("🧩 Proposal Type", ["EMS Proposal", "Full Product Proposal"])
-    st.markdown(f"You selected: **{proposal_type}**")
+    st.markdown(f"<hr style='border: 3px solid {divider_color}; margin-top: 20px; margin-bottom: 30px;'>", unsafe_allow_html=True)
 
-    st.markdown("### 👥 Business Development")  # inline title
-    bd_rep = st.selectbox("BD Representative", [
-        "Bridget Nolan", "Tyler Davis", "Tara Jo Brooks", "Chris Ramirez", "Other"
-    ])
+    # === Proposal Type + Input Form Upload ===
+    col1, spacer, col2 = st.columns([2, 0.4, 3])  # Adjust layout as needed
 
-with col2:
-    uploaded_form = st.file_uploader(
-        "📤 Upload Input Form (Excel)",
-        type=["xlsx", "xlsm", "xls"],
-        help="Drop the input form here to auto-fill fields.",
-    )
+    with col1:
+        proposal_type = st.selectbox("🧩 Proposal Type", ["EMS Proposal", "Full Product Proposal"])
+        st.markdown(f"You selected: **{proposal_type}**")
+
+        st.markdown("### 👥 Business Development")
+        bd_rep = st.selectbox("BD Representative", [
+            "Bridget Nolan", "Tyler Davis", "Tara Jo Brooks", "Chris Ramirez", "Other"
+        ])
+
+    with col2:
+        uploaded_form = st.file_uploader(
+            "📤 Upload Input Form (Excel)",
+            type=["xlsx", "xlsm", "xls"],
+            help="Drop the input form here to auto-fill fields.",
+        )
 
     if uploaded_form:
         uploaded_form.seek(0)  # Reset pointer before reading
